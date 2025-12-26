@@ -42,7 +42,7 @@ Start the local dev server:
 
 ```bash
 npm start
-
+```bash
 
 
 # AngularLab
