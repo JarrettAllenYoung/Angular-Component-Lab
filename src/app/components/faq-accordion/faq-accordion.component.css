@@ -1,0 +1,79 @@
+.accordion {
+  border: 2px solid #2945B8;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  transition: border-color .25s ease;
+}
+
+.accordion__title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+  padding: 14px 56px 14px 30px; /* extra right space for icon */
+  color: #2945B8;
+  font-weight: 600;
+  font-size: 16px;
+  font-family: 'Red Hat Text';
+  text-transform: none;
+  cursor: pointer;
+  position: relative;
+  background: transparent;
+  border: 0;
+}
+
+.accordion__icon {
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.accordion__icon svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+.accordion__text {
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  color: #13161D;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  font-family: 'Red Hat Text';
+  /* keep horizontal padding "reserved" so it doesn’t jump weirdly */
+  padding: 0 65px;
+  transition: grid-template-rows 0.35s ease, padding 0.35s ease;
+}
+
+.accordion__info {
+  overflow: hidden; /* required for 0fr -> 1fr smooth animation */
+}
+
+.accordion.open .accordion__text {
+  grid-template-rows: 1fr;
+  padding: 10px 65px 30px;
+}
+
+@media screen and (max-width: 767px) {
+  .accordion__text {
+    padding: 0 30px;
+  }
+  .accordion.open .accordion__text {
+    padding: 10px 30px 30px;
+  }
+}
+
+.accordion.open {
+  border-color: #2945B8;
+}
