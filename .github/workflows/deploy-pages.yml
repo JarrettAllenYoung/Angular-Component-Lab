@@ -32,13 +32,20 @@ jobs:
       - name: Build (set base-href for Pages)
         run: npm run build -- --base-href "/Angular-Component-Lab/"
 
+      - name: Detect build output folder
+        id: site
+        run: |
+          SITE_DIR="$(dirname "$(find dist -maxdepth 5 -name index.html | head -n 1)")"
+          echo "Detected SITE_DIR=$SITE_DIR"
+          echo "site_dir=$SITE_DIR" >> $GITHUB_OUTPUT
+
       - name: Create 404.html for SPA routing
-        run: cp dist/angular-lab/index.html dist/angular-lab/404.html
+        run: cp "${{ steps.site.outputs.site_dir }}/index.html" "${{ steps.site.outputs.site_dir }}/404.html"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist/angular-lab
+          path: ${{ steps.site.outputs.site_dir }}
 
   deploy:
     needs: build
