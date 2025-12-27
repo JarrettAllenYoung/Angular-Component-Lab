@@ -1,7 +1,6 @@
 .accordion {
   border: 2px solid #2945B8;
   border-radius: 20px;
-  overflow: hidden;
   margin-bottom: 1rem;
   transition: border-color .25s ease;
 }
@@ -58,6 +57,40 @@
 
 .accordion__info {
   overflow: hidden; /* required for 0fr -> 1fr smooth animation */
+  min-height: 0;    /* ✅ prevents grid/flex min-size from forcing height */
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* ✅ this is your paragraph spacing */
+}
+
+/* Normalize block margins so gap is the single source of spacing */
+.accordion__info p {
+  margin: 0;
+}
+
+/* Links inside injected accordion HTML */
+:host ::ng-deep .accordion__info a {
+  color: #2945b8;
+}
+
+/* Ensure lists look like lists (Tailwind preflight often strips this) */
+.accordion__info ul,
+.accordion__info ol {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.accordion__info ul {
+  list-style: disc;
+}
+
+.accordion__info ol {
+  list-style: decimal;
+}
+
+/* Optional: a little breathing room between list items */
+.accordion__info li + li {
+  margin-top: 8px;
 }
 
 .accordion.open .accordion__text {
@@ -76,4 +109,24 @@
 
 .accordion.open {
   border-color: #2945B8;
+}
+
+/* ✅ Styles for content injected via [innerHTML] must pierce view encapsulation */
+:host ::ng-deep .accordion__info ul,
+:host ::ng-deep .accordion__info ol {
+  margin: 0;
+  padding-left: 1.25rem;
+  list-style-position: inside;
+}
+
+:host ::ng-deep .accordion__info ul {
+  list-style-type: disc !important;
+}
+
+:host ::ng-deep .accordion__info ol {
+  list-style-type: decimal !important;
+}
+
+:host ::ng-deep .accordion__info li::marker {
+  color: currentColor;
 }

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
-import { ComponentsComponent } from './components';
+import { CarouselDemoComponent } from './carousel.page';
 
-describe('Components', () => {
-  let component: ComponentsComponent;
-  let fixture: ComponentFixture<ComponentsComponent>;
+describe('CarouselDemoComponent', () => {
+  let component: CarouselDemoComponent;
+  let fixture: ComponentFixture<CarouselDemoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ComponentsComponent],
+      imports: [CarouselDemoComponent],
       providers: [provideRouter([])],
-    }) .compileComponents();
+    }).compileComponents();
 
-    fixture = TestBed.createComponent(ComponentsComponent);
+    fixture = TestBed.createComponent(CarouselDemoComponent);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });
