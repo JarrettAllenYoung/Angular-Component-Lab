@@ -7,7 +7,7 @@ AngularLab is a small, focused component lab for building **real UI components**
 I use this repo for two things:
 
 - **Professional and career development**: practice Angular patterns, component APIs, styling, and accessibility without the overhead of a full product.
-- **Production-minded components**: build components that could eventually be integrated into **Builder.io** (as custom components or a shared internal component library) for my team at work.
+- **Production-minded components**: build components that could potentially be integrated into **Builder.io** (as custom components or a shared internal component library) for my team at work.
 
 ---
 
