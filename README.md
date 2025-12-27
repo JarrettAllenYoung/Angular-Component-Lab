@@ -2,7 +2,7 @@
 
 AngularLab is a small, focused component lab for building **real UI components** in isolation.
 
-👉 **Live demo:** https://jarrettallenyoung.github.io/Angular-Component-Lab/
+👉 **Live demo:** [jarrettallenyoung.github.io/Angular-Component-Lab](https://jarrettallenyoung.github.io/Angular-Component-Lab/)
 
 I use this repo for two things:
 
