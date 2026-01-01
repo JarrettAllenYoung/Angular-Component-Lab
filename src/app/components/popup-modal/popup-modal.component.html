@@ -1,0 +1,23 @@
+<div
+  class="overlay"
+  [class.is-open]="open"
+  (click)="onOverlayClick($event)"
+  [attr.aria-hidden]="!open"
+>
+  <div
+    class="popup"
+    role="dialog"
+    aria-modal="true"
+    [attr.aria-label]="title"
+  >
+    <h2>{{ title }}</h2>
+
+    <button class="close" type="button" (click)="close()" aria-label="Close modal">
+      &times;
+    </button>
+
+    <div class="content">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>
