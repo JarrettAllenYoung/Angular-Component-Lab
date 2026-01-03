@@ -1,0 +1,42 @@
+<label
+  for="menu-opener"
+  tabindex="0"
+  aria-haspopup="true"
+  role="button"
+  aria-controls="menu"
+  class="OpenMenuButton"
+  id="openmenu"
+>
+  OPEN MENU
+</label>
+
+<input type="checkbox" data-menu id="menu-opener" hidden />
+
+<aside class="DrawerMenu" role="menu" id="menu" aria-labelledby="openmenu">
+  <nav class="Menu">
+    <label
+        for="menu-opener"
+        class="MenuCloseButton"
+        aria-label="Close menu"
+        role="button"
+        tabindex="0"
+    >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+  </label>
+    <h2>Awesome CSS Menu</h2>
+
+    <a
+      *ngFor="let item of items"
+      role="menuitem"
+      tabindex="-1"
+      href="#"
+    >
+      {{ item }}
+    </a>
+  </nav>
+
+  <!-- Click overlay to close -->
+  <label for="menu-opener" class="MenuOverlay" aria-label="Close menu"></label>
+</aside>

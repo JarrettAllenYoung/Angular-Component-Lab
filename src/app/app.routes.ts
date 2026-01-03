@@ -5,6 +5,7 @@ import { CarouselDemoComponent } from './pages/components/carousel/carousel.page
 import { AccordionPageComponent } from './pages/components/accordion/accordion.page';
 import { MarqueePageComponent } from './pages/components/marquee/marquee.page';
 import { PopupPageComponent } from './pages/components/popup/popup.page';
+import { MenuPage } from './pages/components/menu/menu.page';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'components', pathMatch: 'full' },
@@ -13,4 +14,5 @@ export const routes: Routes = [
   { path: 'components/accordion', component: AccordionPageComponent },
   { path: 'components/marquee', component: MarqueePageComponent },
   { path: 'components/popup', component: PopupPageComponent },
+  { path: 'components/menu', component: MenuPage },
 ];
