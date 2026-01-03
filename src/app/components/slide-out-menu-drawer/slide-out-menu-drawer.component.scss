@@ -1,0 +1,113 @@
+.OpenMenuButton {
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-weight: 900;
+  word-spacing: 140%;
+  letter-spacing: 4px;
+}
+
+.OpenMenuButton:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+/* Drawer container (RIGHT side) */
+.DrawerMenu {
+  position: fixed;
+  z-index: 99;
+  inset: 0; /* top/right/bottom/left: 0 */
+  width: 100vw;
+  height: 100vh;
+
+  /* off-canvas to the RIGHT by default */
+  transform: translateX(100%);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+  display: grid;
+
+  /* IMPORTANT: overlay first, menu second (menu on right) */
+  grid-template-areas: "OVERLAY MENU";
+  grid-template-columns: 1fr auto;
+}
+
+/* When checkbox is checked, slide in */
+[data-menu]:checked ~ .DrawerMenu {
+  transform: translateX(0);
+}
+
+.Menu {
+  grid-area: MENU;
+  display: block;
+  contain: content;
+  background-color: rebeccapurple;
+  color: #fff;
+  box-sizing: border-box;
+  padding: 24px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  /* drawer width */
+  width: min(420px, 85vw);
+}
+
+.MenuCloseButton {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  user-select: none;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+  line-height: 1;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.MenuCloseButton:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.MenuCloseButton:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.Menu a {
+  text-decoration: none;
+  color: #ffffff80;
+  display: block;
+  padding: 16px 0;
+}
+
+.Menu a:hover {
+  color: #69f0ae;
+}
+
+.Menu > * + * {
+  /* border-top: 1px solid rgba(255, 255, 255, 0.1); */
+  padding-top: 20px;
+}
+
+.MenuOverlay {
+  grid-area: OVERLAY;
+  display: block;
+
+  /* clickable backdrop */
+  background: rgba(0, 0, 0, 0.45);
+
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+/* Only allow clicking the overlay when open */
+[data-menu]:not(:checked) ~ .DrawerMenu .MenuOverlay {
+  pointer-events: none;
+}
+
+[data-menu]:checked ~ .DrawerMenu .MenuOverlay {
+  opacity: 0;
+}
