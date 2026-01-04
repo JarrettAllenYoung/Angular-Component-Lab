@@ -1,0 +1,21 @@
+<article class="product-card">
+  <div class="card-visual">
+    <div class="image-frame">
+      <div class="product-image">
+        <img [src]="product.imageUrl" [alt]="product.imageAlt" />
+      </div>
+    </div>
+  </div>
+
+  <div class="card-details">
+    <h2>{{ product.title }}</h2>
+    <div class="price">{{ product.price }}</div>
+    <p>{{ product.description }}</p>
+
+    <ul class="tags">
+      <li *ngFor="let tag of product.tags" [ngClass]="tag">{{ tag }}</li>
+    </ul>
+
+    <button class="add-to-cart" type="button">Add to Cart</button>
+  </div>
+</article>

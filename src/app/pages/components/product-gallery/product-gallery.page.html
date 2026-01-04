@@ -1,0 +1,41 @@
+<main class="min-h-screen bg-white px-4 sm:px-8 py-8">
+  <a
+    href="/components"
+    (click)="onBack($event)"
+    class="inline-flex items-center gap-2 text-sm font-semibold text-blue-700 hover:underline"
+  >
+    ← Back to components
+  </a>
+
+  <div class="demo-stage">
+    <section class="apothecary">
+
+      <nav class="filters" aria-label="Product filters">
+        <ul class="filters__list justify-center">
+          <li *ngFor="let c of categories">
+            <button
+              type="button"
+              class="filters__btn"
+              [class.is-active]="isActive(c.key)"
+              (click)="setCategory(c.key)"
+            >
+              {{ c.label }}
+            </button>
+          </li>
+        </ul>
+      </nav>
+
+      <div
+        class="products-grid"
+        [@cardList]="selectedCategory"
+        [@gridFade]="selectedCategory"
+        [@.disabled]="disableAnimations"
+      >
+        <app-product-card
+          *ngFor="let product of filteredProducts; trackBy: trackById"
+          [product]="product"
+        ></app-product-card>
+      </div>
+    </section>
+  </div>
+</main>
