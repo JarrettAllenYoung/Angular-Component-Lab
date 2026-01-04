@@ -1,0 +1,36 @@
+<div class="rg">
+  <div class="rg__plans">
+    <div class="rg__title" *ngIf="title">{{ title }}</div>
+
+    <label
+      class="rg__plan"
+      *ngFor="let opt of options; trackBy: trackById"
+      [class.rg__plan--disabled]="disabled || !!opt.disabled"
+      [attr.for]="opt.id"
+    >
+      <input
+        class="rg__input"
+        type="radio"
+        [id]="opt.id"
+        [name]="name"
+        [checked]="isChecked(opt)"
+        [disabled]="disabled || !!opt.disabled"
+        (change)="onSelect(opt.value)"
+      />
+
+      <div class="rg__planContent">
+        <img
+          *ngIf="opt.imgSrc"
+          loading="lazy"
+          [src]="opt.imgSrc"
+          [alt]="opt.imgAlt || ''"
+        />
+
+        <div class="rg__planDetails">
+          <span class="rg__planTitle">{{ opt.title }}</span>
+          <p class="rg__planDesc">{{ opt.description }}</p>
+        </div>
+      </div>
+    </label>
+  </div>
+</div>

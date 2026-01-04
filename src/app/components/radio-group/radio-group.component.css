@@ -1,0 +1,161 @@
+/* Component-only version of your sample CSS */
+
+.rg__plans {
+  display: flex;
+  justify-content: space-between;
+  max-width: 970px;
+  padding: 85px 50px;
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0px 8px 10px 0px #d8dfeb;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.rg__title {
+  font-size: 20px;
+  font-weight: 500;
+  flex-basis: 100%;
+  color: #252f42;
+  margin-bottom: 20px;
+}
+
+.rg__plan {
+  cursor: pointer;
+  width: 48.5%;
+}
+
+/* Hide input but keep it accessible + focusable */
+.rg__input {
+  position: absolute;
+  opacity: 0;
+}
+
+.rg__planContent {
+  display: flex;
+  padding: 30px;
+  box-sizing: border-box;
+  border: 2px solid #e1e2e7;
+  border-radius: 10px;
+  transition: box-shadow 0.4s;
+  position: relative;
+}
+
+.rg__planContent:hover {
+  box-shadow: 0px 3px 5px 0px #e8e8e8;
+}
+
+.rg__planContent img {
+  margin-right: 30px;
+  height: 72px;
+}
+
+.rg__planDetails {
+  min-width: 0;
+}
+
+.rg__planTitle {
+  margin-bottom: 10px;
+  display: block;
+  font-size: 20px;
+  line-height: 24px;
+  color: #252f42;
+}
+
+.rg__planDesc {
+  color: #646a79;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+/* Checked state (matches your original CSS behavior) */
+.rg__input:checked + .rg__planContent::after {
+  content: "";
+  position: absolute;
+  height: 8px;
+  width: 8px;
+  background: #216fe0;
+  right: 20px;
+  top: 20px;
+  border-radius: 100%;
+  border: 1px solid #fff;
+  box-shadow: 0px 0px 0px 2px #0066ff;
+}
+
+.rg__input:checked + .rg__planContent {
+  border: 2px solid #216ee0;
+  background: #eaf1fe;
+  transition: ease-in 0.3s;
+}
+
+/* Keyboard focus */
+.rg__plan:focus-within .rg__planContent {
+  box-shadow: 0px 0px 0px 3px rgba(0, 102, 255, 0.25);
+}
+
+/* Disabled */
+.rg__plan--disabled {
+  cursor: not-allowed;
+}
+.rg__plan--disabled .rg__planContent {
+  opacity: 0.6;
+}
+
+/* Responsive rules from your sample */
+@media screen and (max-width: 991px) {
+  .rg__plans {
+    margin: 0 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 30px;
+  }
+
+  .rg__plan {
+    width: 100%;
+  }
+
+  .rg__plan + .rg__plan {
+    margin-top: 20px;
+  }
+
+  .rg__planDetails {
+    width: 70%;
+    display: inline-block;
+  }
+
+  .rg__input:checked + .rg__planContent::after {
+    top: 45%;
+    transform: translate(-50%);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .rg__planDetails {
+    width: 60%;
+    display: inline-block;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .rg__planContent img {
+    margin-bottom: 20px;
+    height: 56px;
+    transition: height 0.4s;
+  }
+
+  .rg__input:checked + .rg__planContent::after {
+    top: 20px;
+    right: 10px;
+  }
+
+  .rg__planDetails {
+    width: 100%;
+  }
+
+  .rg__planContent {
+    padding: 20px;
+    flex-direction: column;
+    align-items: baseline;
+  }
+}

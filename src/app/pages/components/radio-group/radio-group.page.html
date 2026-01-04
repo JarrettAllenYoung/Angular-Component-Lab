@@ -1,0 +1,25 @@
+<main class="min-h-screen bg-white px-4 sm:px-8 py-8">
+  <a
+    routerLink="/components"
+    class="inline-flex items-center gap-2 text-sm font-semibold text-blue-700 hover:underline"
+  >
+    ← Back to components
+  </a>
+
+  <div class="mt-8 flex flex-col items-center">
+    <h1>Radio Group</h1>
+
+    <div class="mt-6">
+      <app-radio-group
+        title="Choose a pricing plan"
+        name="plan"
+        [options]="options"
+        [(value)]="selectedPlan"
+      ></app-radio-group>
+    </div>
+
+    <div class="mt-4 text-sm text-slate-600">
+      Selected: <code class="font-mono">{{ selectedPlan }}</code>
+    </div>
+  </div>
+</main>
