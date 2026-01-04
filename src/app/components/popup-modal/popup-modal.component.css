@@ -19,10 +19,10 @@
 
 .popup {
   background-color: #fff;
-  width: auto;
+  width: min(600px, 90vw);
+  max-width: 600px;
   height: auto;
   max-height: 90%;
-  max-width: 90%;
   overflow-y: auto;
   position: relative;
   padding: 30px;
