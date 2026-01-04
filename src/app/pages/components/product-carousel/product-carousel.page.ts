@@ -6,7 +6,7 @@ import { ProductCarouselComponent } from '../../../components/product-carousel/p
   selector: 'app-carousel-demo',
   standalone: true,
   imports: [RouterLink, ProductCarouselComponent],
-  templateUrl: './carousel.page.html',
-  styleUrl: './carousel.page.css',
+  templateUrl: './product-carousel.page.html',
+  styleUrl: './product-carousel.page.css',
 })
-export class CarouselDemoComponent {}
+export class ProductCarouselDemoComponent {}
