@@ -6,6 +6,7 @@ import { AccordionPageComponent } from './pages/components/accordion/accordion.p
 import { MarqueePageComponent } from './pages/components/marquee/marquee.page';
 import { PopupPageComponent } from './pages/components/popup/popup.page';
 import { MenuPage } from './pages/components/menu/menu.page';
+import { CssAccordionPage } from './pages/components/css-accordion/css-accordion.page';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'components', pathMatch: 'full' },
@@ -15,4 +16,5 @@ export const routes: Routes = [
   { path: 'components/marquee', component: MarqueePageComponent },
   { path: 'components/popup', component: PopupPageComponent },
   { path: 'components/menu', component: MenuPage },
+  { path: 'components/css-accordion', component: CssAccordionPage },
 ];
