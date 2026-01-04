@@ -1,0 +1,63 @@
+<div class="quiz-shell">
+  <div class="quiz-container">
+    <div class="progress-bar" aria-hidden="true">
+      <div class="progress" [style.width.%]="progressPercent"></div>
+    </div>
+
+    <!-- Steps -->
+    <ng-container *ngIf="!showResult; else resultTpl">
+      <div class="step active">
+        <h2>{{ questions[currentIndex].title }}</h2>
+
+        <div class="options" role="radiogroup" [attr.aria-label]="questions[currentIndex].title">
+        <label
+            class="option"
+            *ngFor="let opt of questions[currentIndex].options"
+            [class.selected]="answers[questions[currentIndex].key] === opt.value"
+            (click)="$event.preventDefault(); selectOption(questions[currentIndex].key, opt.value)"
+            >
+            <input
+                type="radio"
+                [name]="questions[currentIndex].key"
+                [value]="opt.value"
+                [checked]="answers[questions[currentIndex].key] === opt.value"
+            />
+            {{ opt.label }}
+        </label>
+        </div>
+
+        <div class="buttons">
+          <button class="prev-btn" type="button" (click)="prev()" [disabled]="currentIndex === 0">
+            Previous
+          </button>
+
+          <button
+            class="next-btn"
+            type="button"
+            (click)="next()"
+            [disabled]="!isAnswered(questions[currentIndex].key)"
+          >
+            {{ currentIndex === totalSteps - 1 ? 'Submit' : 'Next' }}
+          </button>
+        </div>
+      </div>
+    </ng-container>
+
+    <!-- Result -->
+    <ng-template #resultTpl>
+      <div class="result" style="display: block;">
+        <h2>Quiz Completed!</h2>
+        <p>Thank you for participating in our quiz.</p>
+
+        <div id="answers-summary" class="summary">
+          <div class="summary-row" *ngFor="let q of questions; let i = index">
+            <div class="summary-q">Question {{ i + 1 }}</div>
+            <div class="summary-a">{{ answerLabel(q) }}</div>
+          </div>
+        </div>
+
+        <button class="restart-btn" type="button" (click)="restart()">Restart Quiz</button>
+      </div>
+    </ng-template>
+  </div>
+</div>

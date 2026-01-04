@@ -8,6 +8,7 @@ import { PopupPageComponent } from './pages/components/popup/popup.page';
 import { MenuPage } from './pages/components/menu/menu.page';
 import { CssAccordionPage } from './pages/components/css-accordion/css-accordion.page';
 import { RadioGroupPage } from './pages/components/radio-group/radio-group.page';
+import { MultiStepQuizPageComponent } from './pages/components/multi-step-quiz/multi-step-quiz.page';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'components', pathMatch: 'full' },
@@ -19,4 +20,5 @@ export const routes: Routes = [
   { path: 'components/menu', component: MenuPage },
   { path: 'components/css-accordion', component: CssAccordionPage },
   { path: 'components/radio-group', component: RadioGroupPage },
+  { path: 'components/multi-step-quiz', component: MultiStepQuizPageComponent, },
 ];

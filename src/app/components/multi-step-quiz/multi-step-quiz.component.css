@@ -1,0 +1,171 @@
+.quiz-shell {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #ffe5e5 0%, #e5f1ff 100%);
+  border-radius: 16px;
+}
+
+.quiz-container {
+  background-color: white;
+  border-radius: 15px;
+  padding: 30px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.progress-bar {
+  height: 5px;
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background: linear-gradient(to right, #ffb5b5, #b5d8ff);
+  transition: width 0.3s ease;
+  width: 0%;
+}
+
+.step {
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h2 {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.option {
+  padding: 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  user-select: none;
+}
+
+.option:hover {
+  border-color: #667eea;
+  background-color: #f8f9ff;
+}
+
+.option.selected {
+  border-color: #66eab4;
+  background-color: #f8f9ff;
+}
+
+.option input[type='radio'] {
+  display: none;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.prev-btn {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.next-btn {
+  background-color: #667eea;
+  color: white;
+}
+
+.prev-btn:hover:not(:disabled) {
+  background-color: #d0d0d0;
+}
+
+.next-btn:hover:not(:disabled) {
+  background-color: #66eab4;
+}
+
+.result {
+  text-align: center;
+  display: none;
+}
+
+.result h2 {
+  color: #ffb5b5;
+  margin-bottom: 15px;
+}
+
+.result p {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.summary {
+  margin: 0 auto 20px;
+  text-align: left;
+  max-width: 520px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  color: #666;
+}
+
+.summary-q {
+  font-weight: 600;
+  color: #444;
+}
+
+.summary-a {
+  text-align: right;
+}
+
+.restart-btn {
+  background-color: #667eea;
+  color: white;
+  width: 100%;
+}
+
+.restart-btn:hover {
+  background-color: #66eab4;
+}
