@@ -77,7 +77,7 @@ export class ProductGalleryPageComponent {
   products: Product[] = [
     {
       id: 'belladonna-1',
-      title: 'belladonna leaf',
+      title: 'belladonna leaf 1',
       price: '$18.00',
       description: 'Dried atropa belladonna for banishing and spirit work. Handle with care.',
       imageUrl: 'https://assets.codepen.io/406785/belladonna.webp',
@@ -87,7 +87,7 @@ export class ProductGalleryPageComponent {
     },
     {
       id: 'wormwood-1',
-      title: 'wormwood tincture',
+      title: 'wormwood tincture 1',
       price: '$24.00',
       description: 'Artemisia absinthium extract for divination and opening the third eye',
       imageUrl: 'https://assets.codepen.io/406785/tincture.jpg',
@@ -97,7 +97,7 @@ export class ProductGalleryPageComponent {
     },
     {
       id: 'belladonna-2',
-      title: 'belladonna leaf',
+      title: 'belladonna leaf 2',
       price: '$18.00',
       description: 'Dried atropa belladonna for banishing and spirit work. Handle with care.',
       imageUrl: 'https://assets.codepen.io/406785/belladonna.webp',
@@ -107,7 +107,7 @@ export class ProductGalleryPageComponent {
     },
     {
       id: 'moon-water-1',
-      title: 'full moon water',
+      title: 'full moon water 1',
       price: '$15.00',
       description: 'Spring water charged under the full moon for cleansing and renewal',
       imageUrl: 'https://assets.codepen.io/406785/water.jpg',
@@ -117,7 +117,7 @@ export class ProductGalleryPageComponent {
     },
     {
       id: 'wormwood-2',
-      title: 'wormwood tincture',
+      title: 'wormwood tincture 2',
       price: '$24.00',
       description: 'Artemisia absinthium extract for divination and opening the third eye',
       imageUrl: 'https://assets.codepen.io/406785/tincture.jpg',
@@ -127,7 +127,7 @@ export class ProductGalleryPageComponent {
     },
     {
       id: 'moon-water-2',
-      title: 'full moon water',
+      title: 'full moon water 2',
       price: '$15.00',
       description: 'Spring water charged under the full moon for cleansing and renewal',
       imageUrl: 'https://assets.codepen.io/406785/water.jpg',
