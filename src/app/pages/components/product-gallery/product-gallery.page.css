@@ -1,0 +1,83 @@
+/* stage wrapper so we don't style global body */
+.demo-stage {
+  margin-top: 2rem;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.apothecary {
+  width: min(76.5rem, 100%);
+  margin-inline: auto;
+  color: #c4c4c4;
+  font-family: 'Lato', sans-serif;
+}
+
+h1 {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2rem, 1.8125rem + 0.75vw, 2.6rem);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  line-height: 1.3;
+  margin-bottom: 2rem;
+  text-transform: lowercase;
+}
+
+/* Filter controls (Angular version of the UIkit idea) */
+.filters {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.filters__list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 0;
+  margin: 0;
+}
+
+.filters__btn {
+  min-width: 110px;
+  padding: 0.9rem 1.2rem;
+  border-radius: 0.5rem;
+  border: 1px solid #2a2a2a;
+  background: #141414;
+  color: #c4c4c4;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.filters__btn:hover {
+  background: #1c1c1c;
+  border-color: #3a3a3a;
+}
+
+.filters__btn.is-active {
+  background: #7b68ee;
+  border-color: #7b68ee;
+  color: #fff;
+}
+
+.products-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+@media screen and (max-width: 1024px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .products-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
