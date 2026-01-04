@@ -1,0 +1,196 @@
+:host {
+  display: block;
+}
+
+/* Keep styling scoped (no global body/html) */
+.stage {
+  padding: 2rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.form {
+  background: rgba(19, 35, 47, 0.9);
+  padding: 40px;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 4px;
+  box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
+  font-family: 'Titillium Web', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* Tabs */
+.tab-group {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 40px 0;
+  display: flex;
+}
+
+.tab-group .tab {
+  width: 50%;
+}
+
+.tab-group .tab button {
+  width: 100%;
+  display: block;
+  padding: 15px;
+  background: rgba(160, 179, 176, 0.25);
+  color: #a0b3b0;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.5s ease;
+  border: 0;
+}
+
+.tab-group .tab button:hover {
+  background: #169f79;
+  color: #ffffff;
+}
+
+.tab-group .active button {
+  background: #1ab188;
+  color: #ffffff;
+}
+
+/* Content fade-in (replaces jQuery fadeIn) */
+.panel {
+  animation: fadeIn 600ms ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+h1 {
+  text-align: center;
+  color: #ffffff;
+  font-weight: 300;
+  margin: 0 0 40px;
+}
+
+/* Fields */
+.field-wrap {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.top-row {
+  display: flex;
+  gap: 4%;
+}
+
+.top-row > div {
+  width: 48%;
+}
+
+label {
+  position: absolute;
+  transform: translateY(6px);
+  left: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  transition: all 0.25s ease;
+  pointer-events: none;
+  font-size: 16px;
+}
+
+label .req {
+  margin: 2px;
+  color: #1ab188;
+}
+
+label.active {
+  transform: translateY(42px);
+  left: 2px;
+  font-size: 14px;
+}
+
+label.active .req {
+  opacity: 0;
+}
+
+label.highlight {
+  color: #ffffff;
+}
+
+input {
+  font-size: 16px;
+  display: block;
+  width: 100%;
+  padding: 6px 12px;
+  background: none;
+  border: 1px solid #a0b3b0;
+  color: #ffffff;
+  border-radius: 0;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+input:focus {
+  outline: 0;
+  border-color: #1ab188;
+}
+
+/* Buttons */
+.button {
+  border: 0;
+  outline: none;
+  border-radius: 0;
+  padding: 15px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: #1ab188;
+  color: #ffffff;
+  transition: all 0.5s ease;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.button:hover,
+.button:focus {
+  background: #169f79;
+}
+
+.button-block {
+  display: block;
+  width: 100%;
+}
+
+.forgot {
+  margin: -20px 0 10px 0;
+  text-align: right;
+}
+
+.forgot a {
+  text-decoration: none;
+  color: #1ab188;
+  transition: 0.5s ease;
+  margin-bottom: 10px;
+}
+
+.forgot a:hover {
+  color: #138a67;
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .form {
+    padding: 28px;
+  }
+
+  .top-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .top-row > div {
+    width: 100%;
+  }
+}
