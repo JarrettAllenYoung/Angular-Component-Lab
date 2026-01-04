@@ -1,4 +1,6 @@
 import { CommonModule } from '@angular/common';
+import { ProductCarouselCardComponent } from '../product-carousel-card/product-carousel-card';
+
 import {
   AfterViewInit,
   Component,
@@ -7,7 +9,7 @@ import {
   ViewChild,
 } from '@angular/core';
 
-type CarouselItem = {
+type ProductCarouselItem = {
   id: string;
   title: string;
   reviewCount: number;
@@ -17,7 +19,7 @@ type CarouselItem = {
 @Component({
   selector: 'app-product-carousel',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ProductCarouselCardComponent],
   templateUrl: './product-carousel.html',
   styleUrl: './product-carousel.css',
 })
@@ -26,7 +28,7 @@ export class ProductCarouselComponent implements AfterViewInit {
   subtitle =
     'While you’ll find something special in stores, our main collection (including many bestsellers) is available exclusively on our website.';
 
-  items: CarouselItem[] = [
+  items: ProductCarouselItem[] = [
     { id: '1', title: 'Ultimate H2™', rating: 4.2, reviewCount: 686 },
     { id: '2', title: 'Omni Slim™', rating: 4.0, reviewCount: 541 },
     { id: '3', title: 'Nitro Pulse®', rating: 4.4, reviewCount: 240 },
@@ -137,16 +139,24 @@ export class ProductCarouselComponent implements AfterViewInit {
   }
 
   private updateNavState() {
+    const el = this.trackRef.nativeElement;
     const cards = this.getCards();
+
     if (!cards.length) {
       this.canPrev = false;
       this.canNext = false;
       return;
     }
 
-    const i = this.getClosestIndex();
-    this.canPrev = i > 0;
-    this.canNext = i < cards.length - 1;
+    // Use scroll position so it works even when multiple cards are visible.
+    const maxScrollLeft = Math.max(0, el.scrollWidth - el.clientWidth);
+    const x = el.scrollLeft;
+
+    // Small epsilon to avoid jitter from fractional scroll values.
+    const EPS = 2;
+
+    this.canPrev = x > EPS;
+    this.canNext = x < maxScrollLeft - EPS;
   }
 
   starsArray(rating: number) {
@@ -154,7 +164,7 @@ export class ProductCarouselComponent implements AfterViewInit {
     return Array.from({ length: 5 }, (_, i) => i < full);
   }
 
-  trackById(_i: number, item: CarouselItem) {
+  trackById(_i: number, item: ProductCarouselItem) {
     return item.id;
   }
 }
