@@ -9,7 +9,7 @@ import { NgIf } from '@angular/common';
   styleUrl: './popup-modal.component.css',
 })
 export class PopupModalComponent {
-  @Input() title = 'Here i am';
+  @Input() title = '';
   @Input() open = false;
 
   @Output() openChange = new EventEmitter<boolean>();

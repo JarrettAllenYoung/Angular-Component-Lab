@@ -6,7 +6,27 @@
     ← Back to components
   </a>
 
+  <!-- Button ABOVE the form -->
+  <div class="mt-8 flex justify-center">
+    <button
+      type="button"
+      class="inline-flex items-center justify-center rounded-full bg-blue-700 px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-800"
+      (click)="open()"
+    >
+      Open in Modal
+    </button>
+  </div>
+
+  <!-- Keep the form on the page -->
   <div class="mt-8">
     <app-tabs-login-signup-form></app-tabs-login-signup-form>
   </div>
+
+  <!-- Modal version -->
+  <lab-popup-modal
+    [open]="isOpen()"
+    (openChange)="setOpen($event)"
+  >
+    <app-tabs-login-signup-form></app-tabs-login-signup-form>
+  </lab-popup-modal>
 </main>

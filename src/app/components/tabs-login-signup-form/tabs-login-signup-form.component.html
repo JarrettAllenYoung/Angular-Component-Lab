@@ -1,6 +1,6 @@
 <div class="stage">
   <div class="form">
-    <ul class="tab-group" role="tablist" aria-label="Sign up or log in">
+    <ul class="tab-group flex gap-4" role="tablist" aria-label="Sign up or log in">
         <li class="tab" [class.active]="isActive('login')">
             <button
             type="button"
@@ -35,7 +35,7 @@
       >
         <h1>Welcome Back!</h1>
 
-        <form (submit)="preventSubmit($event)">
+        <form #loginForm="ngForm" (submit)="preventSubmit($event)">
           <div class="field-wrap">
             <label
               [class.active]="labelActive('login_email', login.email)"
@@ -74,9 +74,18 @@
             />
           </div>
 
-          <p class="forgot"><a href="#" (click)="$event.preventDefault()">Forgot Password?</a></p>
+          <div class="mt-4">
+            <p class="forgot"><a href="#" (click)="$event.preventDefault()">Forgot Password?</a></p>
 
-          <button type="submit" class="button button-block">Log In</button>
+            <button
+              type="submit"
+              class="button button-block"
+              [disabled]="loginForm.invalid"
+            >
+              Log In
+            </button>
+          </div>
+          
         </form>
       </div>
 
@@ -89,7 +98,7 @@
       >
         <h1>Sign Up for Free</h1>
 
-        <form (submit)="preventSubmit($event)">
+        <form #signupForm="ngForm" (submit)="preventSubmit($event)">
           <div class="top-row">
             <div class="field-wrap">
               <label
@@ -168,7 +177,13 @@
             />
           </div>
 
-          <button type="submit" class="button button-block">Get Started</button>
+          <button
+            type="submit"
+            class="button button-block mt-8"
+            [disabled]="signupForm.invalid"
+          >
+            Get Started
+          </button>
         </form>
       </div>
       
