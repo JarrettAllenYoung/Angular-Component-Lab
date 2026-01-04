@@ -91,7 +91,7 @@
   padding: 0.75rem;
   background: #2a2a2a;
   border: 1px solid #3a3a3a;
-  color: #c4c4c4;
+  color: #fff;
   font-family: 'Lato', sans-serif;
   font-size: 0.875rem;
   text-transform: uppercase;
@@ -102,8 +102,8 @@
 }
 
 .add-to-cart:hover {
-  background: #3a3a3a;
-  border-color: #4a4a4a;
+  background: #7b68ee;
+  border-color: #7b68ee;
 }
 
 .product-card:nth-child(1) .add-to-cart:hover { border-color: #8b6b9b; }
