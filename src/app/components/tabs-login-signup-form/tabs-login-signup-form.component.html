@@ -1,0 +1,177 @@
+<div class="stage">
+  <div class="form">
+    <ul class="tab-group" role="tablist" aria-label="Sign up or log in">
+        <li class="tab" [class.active]="isActive('login')">
+            <button
+            type="button"
+            role="tab"
+            [attr.aria-selected]="isActive('login')"
+            [attr.tabindex]="isActive('login') ? 0 : -1"
+            (click)="setTab('login')"
+            >
+            Log In
+            </button>
+        </li>
+        <li class="tab" [class.active]="isActive('signup')">
+            <button
+            type="button"
+            role="tab"
+            [attr.aria-selected]="isActive('signup')"
+            [attr.tabindex]="isActive('signup') ? 0 : -1"
+            (click)="setTab('signup')"
+            >
+            Sign Up
+            </button>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+      <!-- LOG IN -->
+      <div
+        *ngIf="activeTab === 'login'"
+        class="panel"
+        role="tabpanel"
+        aria-label="Log In"
+      >
+        <h1>Welcome Back!</h1>
+
+        <form (submit)="preventSubmit($event)">
+          <div class="field-wrap">
+            <label
+              [class.active]="labelActive('login_email', login.email)"
+              [class.highlight]="labelHighlight('login_email', login.email)"
+            >
+              Email Address<span class="req">*</span>
+            </label>
+
+            <input
+              type="email"
+              required
+              autocomplete="off"
+              name="login_email"
+              [(ngModel)]="login.email"
+              (focus)="onFocus('login_email')"
+              (blur)="onBlur('login_email')"
+            />
+          </div>
+
+          <div class="field-wrap">
+            <label
+              [class.active]="labelActive('login_password', login.password)"
+              [class.highlight]="labelHighlight('login_password', login.password)"
+            >
+              Password<span class="req">*</span>
+            </label>
+
+            <input
+              type="password"
+              required
+              autocomplete="off"
+              name="login_password"
+              [(ngModel)]="login.password"
+              (focus)="onFocus('login_password')"
+              (blur)="onBlur('login_password')"
+            />
+          </div>
+
+          <p class="forgot"><a href="#" (click)="$event.preventDefault()">Forgot Password?</a></p>
+
+          <button type="submit" class="button button-block">Log In</button>
+        </form>
+      </div>
+
+      <!-- SIGN UP -->
+      <div
+        *ngIf="activeTab === 'signup'"
+        class="panel"
+        role="tabpanel"
+        aria-label="Sign Up"
+      >
+        <h1>Sign Up for Free</h1>
+
+        <form (submit)="preventSubmit($event)">
+          <div class="top-row">
+            <div class="field-wrap">
+              <label
+                [class.active]="labelActive('signup_firstName', signup.firstName)"
+                [class.highlight]="labelHighlight('signup_firstName', signup.firstName)"
+              >
+                First Name<span class="req">*</span>
+              </label>
+
+              <input
+                type="text"
+                required
+                autocomplete="off"
+                name="signup_firstName"
+                [(ngModel)]="signup.firstName"
+                (focus)="onFocus('signup_firstName')"
+                (blur)="onBlur('signup_firstName')"
+              />
+            </div>
+
+            <div class="field-wrap">
+              <label
+                [class.active]="labelActive('signup_lastName', signup.lastName)"
+                [class.highlight]="labelHighlight('signup_lastName', signup.lastName)"
+              >
+                Last Name<span class="req">*</span>
+              </label>
+
+              <input
+                type="text"
+                required
+                autocomplete="off"
+                name="signup_lastName"
+                [(ngModel)]="signup.lastName"
+                (focus)="onFocus('signup_lastName')"
+                (blur)="onBlur('signup_lastName')"
+              />
+            </div>
+          </div>
+
+          <div class="field-wrap">
+            <label
+              [class.active]="labelActive('signup_email', signup.email)"
+              [class.highlight]="labelHighlight('signup_email', signup.email)"
+            >
+              Email Address<span class="req">*</span>
+            </label>
+
+            <input
+              type="email"
+              required
+              autocomplete="off"
+              name="signup_email"
+              [(ngModel)]="signup.email"
+              (focus)="onFocus('signup_email')"
+              (blur)="onBlur('signup_email')"
+            />
+          </div>
+
+          <div class="field-wrap">
+            <label
+              [class.active]="labelActive('signup_password', signup.password)"
+              [class.highlight]="labelHighlight('signup_password', signup.password)"
+            >
+              Set A Password<span class="req">*</span>
+            </label>
+
+            <input
+              type="password"
+              required
+              autocomplete="off"
+              name="signup_password"
+              [(ngModel)]="signup.password"
+              (focus)="onFocus('signup_password')"
+              (blur)="onBlur('signup_password')"
+            />
+          </div>
+
+          <button type="submit" class="button button-block">Get Started</button>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
