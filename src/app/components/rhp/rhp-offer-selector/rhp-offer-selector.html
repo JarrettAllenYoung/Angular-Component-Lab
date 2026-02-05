@@ -1,0 +1,156 @@
+<section class="rhp-offer">
+  <!-- CHOOSE A FLAVOR (hide when Two people is selected) -->
+  @if (selectedQty() !== 2) {
+    <div class="rhp-offer__section">
+      <div class="rhp-offer__label">CHOOSE A FLAVOR</div>
+
+      <div class="rhp-tabs">
+        <button
+          type="button"
+          class="rhp-tab"
+          [class.is-active]="flavor() === 'strawberry'"
+          (click)="setFlavor('strawberry')"
+        >
+          <span class="rhp-emoji">🍓</span>
+          STRAWBERRY LEMONADE
+        </button>
+
+        <button
+          type="button"
+          class="rhp-tab"
+          [class.is-active]="flavor() === 'watermelon'"
+          (click)="setFlavor('watermelon')"
+        >
+          <span class="rhp-emoji">🍉</span>
+          WATERMELON MINT
+        </button>
+      </div>
+    </div>
+  }
+
+  <!-- CHOOSE YOUR PACKAGE -->
+  <div class="rhp-offer__section">
+    <div class="rhp-offer__label">CHOOSE YOUR PACKAGE</div>
+
+    <div class="rhp-tabs">
+      <button
+        type="button"
+        class="rhp-tab"
+        [class.is-active]="packageType() === 'otp'"
+        (click)="setPackageType('otp')"
+      >
+        ONE-TIME PURCHASE
+      </button>
+
+      <button
+        type="button"
+        class="rhp-tab"
+        [class.is-active]="packageType() === 'sub'"
+        (click)="setPackageType('sub')"
+      >
+        SUBSCRIBE &amp; SAVE
+      </button>
+    </div>
+  </div>
+
+  <!-- OFFERS -->
+  <div class="rhp-card">
+    <div class="rhp-rows">
+      @for (row of offers(); track row.qty) {
+        <div class="rhp-row-wrap">
+          <button
+            type="button"
+            class="rhp-row"
+            [class.is-selected]="selectedQty() === row.qty"
+            (click)="selectQty(row.qty)"
+          >
+            <span class="rhp-radio" aria-hidden="true"></span>
+
+            <div class="rhp-row__main">
+              <div class="rhp-row__title">
+                {{ row.qty === 1 ? 'One person' : 'Two people' }}
+              </div>
+
+              @if (packageType() === 'otp' && row.memberLine) {
+                <div class="rhp-row__subline">{{ row.memberLine }}</div>
+              }
+            </div>
+
+            <div class="rhp-row__right">
+              @if (row.saveLabel) {
+                <span class="rhp-save">{{ row.saveLabel }}</span>
+              }
+
+              <div class="rhp-price">
+                <div class="rhp-price__num">${{ row.price.toFixed(2) }}</div>
+
+                @if (packageType() === 'sub' && row.cadence) {
+                  <div class="rhp-price__cadence">{{ row.cadence }}</div>
+                }
+              </div>
+            </div>
+          </button>
+
+          <!-- Two People flavor mix row -->
+          @if (row.qty === 2 && selectedQty() === 2) {
+            <div class="rhp-flavor-mix" (click)="$event.stopPropagation()">
+              <div class="rhp-flavor-line">
+                <div class="rhp-flavor-name">Strawberry Lemonade</div>
+
+                <div class="rhp-stepper">
+                  <button type="button" class="rhp-stepper-btn" (click)="decFlavor('strawberry')">-</button>
+                  <div class="rhp-stepper-val">{{ strawberryQty() }}</div>
+                  <button type="button" class="rhp-stepper-btn" (click)="incFlavor('strawberry')">+</button>
+                </div>
+              </div>
+
+              <div class="rhp-flavor-line">
+                <div class="rhp-flavor-name">Watermelon Mint</div>
+
+                <div class="rhp-stepper">
+                  <button type="button" class="rhp-stepper-btn" (click)="decFlavor('watermelon')">-</button>
+                  <div class="rhp-stepper-val">{{ watermelonQty() }}</div>
+                  <button type="button" class="rhp-stepper-btn" (click)="incFlavor('watermelon')">+</button>
+                </div>
+              </div>
+
+              <div class="rhp-flavor-note">
+                Total: {{ strawberryQty() + watermelonQty() }} / 2
+              </div>
+            </div>
+          }
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <button type="button" class="rhp-cta" (click)="onAddToCart()">
+    {{ ctaLabel() }}
+  </button>
+
+  <!-- MEMBER CTA (only for one-time purchase, like your screenshot) -->
+  @if (packageType() === 'otp') {
+    <div class="rhp-member">
+      <div class="rhp-member__big">
+        Or pay member price of <strong>$134.85</strong>
+      </div>
+
+      <div class="rhp-member__actions">
+        <a href="#" class="rhp-link">LOG IN</a>
+        <span class="rhp-member__or">or</span>
+        <a href="#" class="rhp-pill">SIGN UP</a>
+      </div>
+    </div>
+  }
+
+  <!-- FOOTER LINE -->
+  <div class="rhp-foot">
+    <div class="rhp-foot__line">
+      FREE SHIPPING ON U.S. ORDERS $50 OR MORE
+    </div>
+    <div class="rhp-foot__line rhp-foot__muted">
+      90-DAY MONEY-BACK GUARANTEE
+    </div>
+  </div>
+</section>
