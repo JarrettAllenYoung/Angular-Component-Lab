@@ -185,7 +185,7 @@
 .rhp-row__right {
   display: inline-flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
 }
 
 .rhp-save {
@@ -306,7 +306,7 @@
 }
 
 /* Mobile safeguards */
-@media (max-width: 420px) {
+@media (max-width: 767px) {
   .rhp-tabs {
     grid-template-columns: 1fr;
   }
@@ -315,9 +315,13 @@
     grid-template-columns: 36px 1fr;
   }
 
+  .rhp-row__main {
+    flex-direction: column;
+  }
+
   .rhp-row__right {
     grid-column: 2;
-    justify-content: space-between;
+    justify-content: start;
     width: 100%;
   }
 

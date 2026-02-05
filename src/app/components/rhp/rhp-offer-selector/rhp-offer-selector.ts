@@ -50,7 +50,7 @@ export class RhpOfferSelectorComponent {
 
   subOffers = signal<OfferRow[]>([
     { qty: 1, price: 44.95, saveLabel: 'Save 44%', cadence: 'Monthly' },
-    { qty: 2, price: 119.85, saveLabel: 'Save 50%', cadence: 'Monthly' },
+    { qty: 2, price: 89.91, saveLabel: 'Save 50%', cadence: 'Monthly' },
   ]);
 
   // Derived
