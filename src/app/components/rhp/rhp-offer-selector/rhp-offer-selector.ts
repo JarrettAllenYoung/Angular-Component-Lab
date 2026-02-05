@@ -39,6 +39,8 @@ export class RhpOfferSelectorComponent {
   @Output() addToCart = new EventEmitter<RhpCartItem>();
 
   onAddToCart() {
+    if (!this.canAddToCart()) return;
+
     const offer = this.selectedOffer();
     if (!offer) return;
 
@@ -77,6 +79,11 @@ export class RhpOfferSelectorComponent {
   ctaLabel = computed(() => {
     const price = this.selectedOffer()?.price ?? 0;
     return `ADD TO CART - $${price.toFixed(2)}`;
+  });
+
+  canAddToCart = computed(() => {
+    if (this.selectedQty() !== 2) return true;
+    return this.strawberryQty() + this.watermelonQty() === 2;
   });
 
   setFlavor(f: Flavor) {

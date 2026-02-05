@@ -229,6 +229,15 @@
   cursor: pointer;
 }
 
+.rhp-cta.is-disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.rhp-cta:disabled {
+  cursor: not-allowed;
+}
+
 .rhp-member {
   margin-top: 14px;
   border-radius: 14px;
