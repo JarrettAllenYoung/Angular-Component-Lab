@@ -3,9 +3,7 @@
 }
 
 .rhp-offer {
-  
   border-radius: 16px;
-  padding: 18px;
 }
 
 .rhp-offer__section + .rhp-offer__section {
@@ -91,9 +89,9 @@
 }
 
 .rhp-flavor-line {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto;
   align-items: center;
-  justify-content: space-between;
   gap: 12px;
   padding: 10px 0;
 }
@@ -110,7 +108,10 @@
 
 .rhp-stepper {
   display: inline-flex;
+  justify-content: center;
   align-items: center;
+  justify-self: end;
+  width: max-content;
   border: 1px solid rgba(58, 52, 45, 0.45);
   border-radius: 12px;
   overflow: hidden;
@@ -302,4 +303,32 @@
   margin-top: 6px;
   opacity: 0.8;
   font-weight: 700;
+}
+
+/* Mobile safeguards */
+@media (max-width: 420px) {
+  .rhp-tabs {
+    grid-template-columns: 1fr;
+  }
+
+  .rhp-row {
+    grid-template-columns: 36px 1fr;
+  }
+
+  .rhp-row__right {
+    grid-column: 2;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .rhp-price__num {
+    font-size: 28px;
+  }
+}
+
+/* Prevent children from forcing overflow */
+.rhp-row__main,
+.rhp-row__right,
+.rhp-price {
+  min-width: 0;
 }
