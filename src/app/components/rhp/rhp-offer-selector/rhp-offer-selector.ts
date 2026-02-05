@@ -20,11 +20,13 @@ type OfferRow = {
   styleUrl: './rhp-offer-selector.css',
 })
 export class RhpOfferSelectorComponent {
+  @Output() addToCart = new EventEmitter<RhpCartItem>();
+
   flavor = signal<Flavor>('strawberry');
   packageType = signal<PackageType>('otp');
   selectedQty = signal<Qty>(2);
-  strawberryQty = signal<number>(1);
-  watermelonQty = signal<number>(1);
+  strawberryQty = signal<number>(0);
+  watermelonQty = signal<number>(0);
 
   otpOffers = signal<OfferRow[]>([
     { qty: 1, price: 79.95, memberLine: 'Or $49.95 with a free account' },
@@ -35,8 +37,6 @@ export class RhpOfferSelectorComponent {
     { qty: 1, price: 44.95, saveLabel: 'Save 44%', cadence: 'Monthly' },
     { qty: 2, price: 119.85, saveLabel: 'Save 50%', cadence: 'Monthly' },
   ]);
-
-  @Output() addToCart = new EventEmitter<RhpCartItem>();
 
   onAddToCart() {
     if (!this.canAddToCart()) return;
@@ -100,19 +100,6 @@ export class RhpOfferSelectorComponent {
 
   selectQty(qty: Qty) {
     this.selectedQty.set(qty);
-
-    if (qty === 2) {
-      this.syncTwoPeopleDefaults();
-    }
-  }
-
-  private syncTwoPeopleDefaults() {
-    // If the user selects "Two people" and the mix is invalid, default to 1 + 1
-    const total = this.strawberryQty() + this.watermelonQty();
-    if (total !== 2) {
-      this.strawberryQty.set(1);
-      this.watermelonQty.set(1);
-    }
   }
 
   setFlavorQty(flavor: Flavor, next: number) {
