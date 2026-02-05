@@ -135,6 +135,12 @@
     {{ ctaLabel() }}
   </button>
 
+  @if (selectedQty() === 2 && !canAddToCart()) {
+    <div class="rhp-cta-hint">
+      Select 2 total flavors to continue.
+    </div>
+  }
+
   <!-- MEMBER CTA (only for one-time purchase, like your screenshot) -->
   @if (packageType() === 'otp') {
     <div class="rhp-member">
