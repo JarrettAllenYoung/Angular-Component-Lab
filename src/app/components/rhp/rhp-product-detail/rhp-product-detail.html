@@ -1,0 +1,19 @@
+<section class="rhp-pdp">
+  <div class="rhp-pdp__grid">
+    <!-- Left: image placeholder -->
+    <div class="rhp-pdp__media">
+      <img
+        class="rhp-pdp__img"
+        src="images/rhp/MorningKick.webp"
+        alt="Morning Kick"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+
+    <!-- Right: offer selector -->
+    <div class="rhp-pdp__buy">
+      <app-rhp-offer-selector (addToCart)="addToCart.emit($event)"></app-rhp-offer-selector>
+    </div>
+  </div>
+</section>

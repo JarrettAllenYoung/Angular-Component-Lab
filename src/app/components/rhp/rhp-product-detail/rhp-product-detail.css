@@ -1,0 +1,34 @@
+:host {
+  display: block;
+}
+
+.rhp-pdp {
+  padding: 16px 0;
+  max-width: 1220px;
+  margin: 0 auto;
+}
+
+.rhp-pdp__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 70px;
+}
+
+.rhp-pdp__img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+  object-fit: cover;
+  padding: 60px 94px 60px 94px;
+  background-color: transparent;
+  background-image: linear-gradient(215deg, #f6f2ee -25.46%, #dfd3c8 146.41%);
+}
+
+@media (min-width: 1024px) {
+  .rhp-pdp__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: start;
+  }
+}
