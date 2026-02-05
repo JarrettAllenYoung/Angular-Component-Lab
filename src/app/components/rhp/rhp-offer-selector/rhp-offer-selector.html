@@ -125,7 +125,13 @@
   </div>
 
   <!-- CTA -->
-  <button type="button" class="rhp-cta" (click)="onAddToCart()">
+  <button
+    type="button"
+    class="rhp-cta"
+    (click)="onAddToCart()"
+    [disabled]="!canAddToCart()"
+    [class.is-disabled]="!canAddToCart()"
+  >
     {{ ctaLabel() }}
   </button>
 
