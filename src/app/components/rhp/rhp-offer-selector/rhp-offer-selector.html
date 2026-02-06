@@ -99,7 +99,12 @@
             [attr.aria-hidden]="!(row.qty === 2 && selectedQty() === 2)"
           >
             <div class="rhp-flavor-line">
-              <div class="rhp-flavor-name">Strawberry Lemonade</div>
+              <div class="rhp-flavor-name">
+                Strawberry Lemonade
+                @if (strawberryQty() > 0) {
+                  <span class="rhp-servings">({{ servingsForFlavor('strawberry') }} servings)</span>
+                }
+              </div>
 
               <div class="rhp-stepper">
                 <button type="button" class="rhp-stepper-btn" (click)="decFlavor('strawberry')">-</button>
@@ -109,7 +114,12 @@
             </div>
 
             <div class="rhp-flavor-line">
-              <div class="rhp-flavor-name">Watermelon Mint</div>
+              <div class="rhp-flavor-name">
+                Watermelon Mint
+                @if (watermelonQty() > 0) {
+                  <span class="rhp-servings">({{ servingsForFlavor('watermelon') }} servings)</span>
+                }
+              </div>
 
               <div class="rhp-stepper">
                 <button type="button" class="rhp-stepper-btn" (click)="decFlavor('watermelon')">-</button>
