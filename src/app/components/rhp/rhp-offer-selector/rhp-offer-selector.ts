@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output, computed, signal } from '@angular/core';
+import { RhpLoggedOutMessageContainerComponent } from '../rhp-logged-out-message-container/rhp-logged-out-message-container';
 import type { RhpCartItem } from '../rhp-cart-detail-drawer/rhp-cart-detail-drawer';
 
 type Flavor = 'strawberry' | 'watermelon';
@@ -11,6 +12,7 @@ type OfferRow = {
   price: number;
   cadence?: string;
   memberLine?: string;
+  vipPrice?: number;
 };
 
 const FLAVOR_LABEL: Record<Flavor, string> = {
@@ -21,6 +23,7 @@ const FLAVOR_LABEL: Record<Flavor, string> = {
 @Component({
   selector: 'app-rhp-offer-selector',
   standalone: true,
+  imports: [RhpLoggedOutMessageContainerComponent],
   templateUrl: './rhp-offer-selector.html',
   styleUrl: './rhp-offer-selector.css',
 })
@@ -39,10 +42,11 @@ export class RhpOfferSelectorComponent {
 
   // Offer data
   otpOffers = signal<OfferRow[]>([
-    { qty: 1, price: 79.95, memberLine: 'Or $49.95 with a free account' },
+    { qty: 1, price: 79.95, vipPrice: 49.95, memberLine: 'Or $49.95 with a free account' },
     {
       qty: 2,
       price: 143.91,
+      vipPrice: 89.91,
       saveLabel: 'Save 10%',
       memberLine: 'Or $89.91 with a free account',
     },
@@ -50,7 +54,7 @@ export class RhpOfferSelectorComponent {
 
   subOffers = signal<OfferRow[]>([
     { qty: 1, price: 44.95, saveLabel: 'Save 44%', cadence: 'Monthly' },
-    { qty: 2, price: 89.91, saveLabel: 'Save 50%', cadence: 'Monthly' },
+    { qty: 2, price: 79.95, saveLabel: 'Save 50%', cadence: 'Monthly' },
   ]);
 
   // Derived
@@ -62,6 +66,11 @@ export class RhpOfferSelectorComponent {
     const list = this.offers();
     const found = list.find((o) => o.qty === this.selectedQty());
     return found ?? list[0];
+  });
+
+  vipTotalPriceLabel = computed(() => {
+    const vip = this.selectedOffer()?.vipPrice ?? 0;
+    return `$${vip.toFixed(2)}`;
   });
 
   ctaLabel = computed(() => {
@@ -126,6 +135,14 @@ export class RhpOfferSelectorComponent {
       packageLabel,
       peopleLabel,
       price: offer.price,
+
+      // NEW: used by the drawer logged-out component
+      vipTotalPriceLabel:
+        this.packageType() === 'otp'
+          ? (this.selectedQty() === 2 ? '$89.91' : '$49.95')
+          : '',
+      loginHref: '',
+      signUpHref: '',
     });
   }
 

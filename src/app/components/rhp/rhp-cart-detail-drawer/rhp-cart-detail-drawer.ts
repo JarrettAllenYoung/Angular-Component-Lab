@@ -1,4 +1,14 @@
-import { Component, EventEmitter, Input, OnChanges, OnDestroy, Output, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnDestroy,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
+
+import { RhpLoggedOutMessageContainerComponent } from '../rhp-logged-out-message-container/rhp-logged-out-message-container';
 
 export type RhpCartItem = {
   productName: string;
@@ -6,11 +16,17 @@ export type RhpCartItem = {
   packageLabel: string;
   peopleLabel: string;
   price: number;
+
+  // optional, so nothing else breaks
+  vipTotalPriceLabel?: string;
+  signUpHref?: string;
+  loginHref?: string;
 };
 
 @Component({
   selector: 'app-rhp-cart-detail-drawer',
   standalone: true,
+  imports: [RhpLoggedOutMessageContainerComponent],
   templateUrl: './rhp-cart-detail-drawer.html',
   styleUrl: './rhp-cart-detail-drawer.css',
 })
