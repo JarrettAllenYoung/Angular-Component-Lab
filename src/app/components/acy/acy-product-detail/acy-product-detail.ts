@@ -20,7 +20,7 @@ import {
 })
 export class AcyProductDetailComponent {
   // image on the left
-  selectedFlavorImgSrc = signal('/images/acy/ACY_MorningCompleteAppleCinnamon.webp');
+  selectedFlavorImgSrc = signal('images/acy/ACY_MorningCompleteAppleCinnamon.webp');
   selectedFlavorImgAlt = signal('Apple Cinnamon');
 
   // drawer state
