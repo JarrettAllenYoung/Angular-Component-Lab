@@ -97,31 +97,31 @@ export class AcyOfferSelectorComponent {
       key: 'apple',
       label: 'Apple Cinnamon',
       imgAlt: 'Apple Cinnamon',
-      imgSrc: '/images/acy/ACY_MorningCompleteAppleCinnamon.webp',
+      imgSrc: 'images/acy/ACY_MorningCompleteAppleCinnamon.webp',
     },
     {
       key: 'citrus',
       label: 'Citrus Medley',
       imgAlt: 'Citrus Medley',
-      imgSrc: '/images/acy/ACY_MorningCompleteCitrus.webp',
+      imgSrc: 'images/acy/ACY_MorningCompleteCitrus.webp',
     },
     {
       key: 'mixed',
       label: 'Mixed Berry',
       imgAlt: 'Mixed Berry',
-      imgSrc: '/images/acy/ACY_MorningCompleteMixedBerry.webp',
+      imgSrc: 'images/acy/ACY_MorningCompleteMixedBerry.webp',
     },
     {
       key: 'matcha',
       label: 'Matcha Tea',
       imgAlt: 'Matcha Tea',
-      imgSrc: '/images/acy/ACY_MorningCompleteMatcha.webp',
+      imgSrc: 'images/acy/ACY_MorningCompleteMatcha.webp',
     },
     {
       key: 'cranberry',
       label: 'Cranberry Orange',
       imgAlt: 'Cranberry Orange',
-      imgSrc: '/images/acy/ACY_MorningCompleteCranberryOrange.webp',
+      imgSrc: 'images/acy/ACY_MorningCompleteCranberryOrange.webp',
     },
   ];
 
