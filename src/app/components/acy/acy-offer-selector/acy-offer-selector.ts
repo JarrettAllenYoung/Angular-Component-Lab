@@ -41,7 +41,7 @@ export class AcyOfferSelectorComponent {
   // --- pricing (non-member for now) ---
   readonly unitPrice = 79.0;
   readonly maxTotalQty = 6;
-  readonly servingsPerJar = 15;
+  readonly servingsPerJar = 30;
 
   // --- OTP pricing matrix (bundle totals) ---
   readonly otpBundleTotals: Record<number, number> = {
