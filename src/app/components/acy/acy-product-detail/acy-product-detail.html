@@ -1,0 +1,24 @@
+<div class="acy-pdp">
+  <div class="acy-pdp__media">
+    <div class="acy-pdp__media-card">
+      <img
+        [src]="selectedFlavorImgSrc()"
+        [alt]="selectedFlavorImgAlt()"
+        class="acy-pdp__img"
+      />
+    </div>
+  </div>
+
+  <div class="acy-pdp__buy">
+    <app-acy-offer-selector
+      (flavorChange)="onFlavorChange($event)"
+      (addToCart)="onAddToCart($event)"
+    ></app-acy-offer-selector>
+  </div>
+
+  <app-acy-cart-detail-drawer
+    [open]="drawerOpen()"
+    [item]="cartItem()"
+    (close)="closeDrawer()"
+  ></app-acy-cart-detail-drawer>
+</div>

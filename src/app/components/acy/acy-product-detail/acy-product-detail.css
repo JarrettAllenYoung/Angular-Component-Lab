@@ -1,0 +1,40 @@
+:host {
+  display: block;
+}
+
+.acy-pdp {
+  display: grid;
+  gap: 32px;
+}
+
+@media (min-width: 1024px) {
+  .acy-pdp {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+  .acy-pdp__media {
+    position: sticky;
+    top: 24px;
+    align-self: start;
+  }
+}
+
+.acy-pdp__media-card {
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.acy-pdp__media-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #334155;
+}
+
+.acy-pdp__img {
+  width: 70%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+}
