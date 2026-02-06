@@ -20,6 +20,8 @@ const FLAVOR_LABEL: Record<Flavor, string> = {
   watermelon: 'Watermelon Mint',
 };
 
+const SERVINGS_PER_JAR = 30;
+
 @Component({
   selector: 'app-rhp-offer-selector',
   standalone: true,
@@ -33,12 +35,22 @@ export class RhpOfferSelectorComponent {
 
   // Base selection state
   flavor = signal<Flavor>('strawberry'); // used for One person only (tabs hidden for Two people)
-  packageType = signal<PackageType>('otp');
+  packageType = signal<PackageType>('sub');
   selectedQty = signal<Qty>(2);
 
   // Two-people mix state (0..2 each, total <= 2)
   strawberryQty = signal<number>(0);
   watermelonQty = signal<number>(0);
+
+  servingsForFlavor(flavor: Flavor) {
+    return this.getFlavorQty(flavor) * SERVINGS_PER_JAR;
+  }
+
+  servingsLabelForFlavor(flavor: Flavor) {
+    const servings = this.servingsForFlavor(flavor);
+    if (servings <= 0) return '';
+    return `(${servings} servings)`;
+  }
 
   // Offer data
   otpOffers = signal<OfferRow[]>([
@@ -136,13 +148,10 @@ export class RhpOfferSelectorComponent {
       peopleLabel,
       price: offer.price,
 
-      // NEW: used by the drawer logged-out component
-      vipTotalPriceLabel:
-        this.packageType() === 'otp'
-          ? (this.selectedQty() === 2 ? '$89.91' : '$49.95')
-          : '',
-      loginHref: '',
-      signUpHref: '',
+      // Only provide these for one-time purchase
+      vipTotalPriceLabel: this.packageType() === 'otp' ? this.vipTotalPriceLabel() : undefined,
+      loginHref: this.packageType() === 'otp' ? '' : undefined,
+      signUpHref: this.packageType() === 'otp' ? '' : undefined,
     });
   }
 
