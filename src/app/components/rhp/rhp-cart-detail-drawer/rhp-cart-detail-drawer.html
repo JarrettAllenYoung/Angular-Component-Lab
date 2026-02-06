@@ -68,6 +68,14 @@
             </div>
           </div>
         </div>
+
+        @if (item.packageLabel === 'One-time purchase') {
+          <app-rhp-logged-out-message-container
+            [vipTotalPriceLabel]="item.vipTotalPriceLabel ?? ''"
+            [loginHref]="item.loginHref ?? ''"
+            [signUpHref]="item.signUpHref ?? ''"
+          ></app-rhp-logged-out-message-container>
+        }
       }
     </div>
 

@@ -92,37 +92,48 @@
           </button>
 
           <!-- Two People flavor mix row -->
-          @if (row.qty === 2 && selectedQty() === 2) {
-            <div class="rhp-flavor-mix" (click)="$event.stopPropagation()">
-              <div class="rhp-flavor-line">
-                <div class="rhp-flavor-name">Strawberry Lemonade</div>
+          <div
+            class="rhp-flavor-mix"
+            [class.is-open]="row.qty === 2 && selectedQty() === 2"
+            (click)="$event.stopPropagation()"
+            [attr.aria-hidden]="!(row.qty === 2 && selectedQty() === 2)"
+          >
+            <div class="rhp-flavor-line">
+              <div class="rhp-flavor-name">Strawberry Lemonade</div>
 
-                <div class="rhp-stepper">
-                  <button type="button" class="rhp-stepper-btn" (click)="decFlavor('strawberry')">-</button>
-                  <div class="rhp-stepper-val">{{ strawberryQty() }}</div>
-                  <button type="button" class="rhp-stepper-btn" (click)="incFlavor('strawberry')">+</button>
-                </div>
-              </div>
-
-              <div class="rhp-flavor-line">
-                <div class="rhp-flavor-name">Watermelon Mint</div>
-
-                <div class="rhp-stepper">
-                  <button type="button" class="rhp-stepper-btn" (click)="decFlavor('watermelon')">-</button>
-                  <div class="rhp-stepper-val">{{ watermelonQty() }}</div>
-                  <button type="button" class="rhp-stepper-btn" (click)="incFlavor('watermelon')">+</button>
-                </div>
-              </div>
-
-              <div class="rhp-flavor-note">
-                Total: {{ strawberryQty() + watermelonQty() }} / 2
+              <div class="rhp-stepper">
+                <button type="button" class="rhp-stepper-btn" (click)="decFlavor('strawberry')">-</button>
+                <div class="rhp-stepper-val">{{ strawberryQty() }}</div>
+                <button type="button" class="rhp-stepper-btn" (click)="incFlavor('strawberry')">+</button>
               </div>
             </div>
-          }
+
+            <div class="rhp-flavor-line">
+              <div class="rhp-flavor-name">Watermelon Mint</div>
+
+              <div class="rhp-stepper">
+                <button type="button" class="rhp-stepper-btn" (click)="decFlavor('watermelon')">-</button>
+                <div class="rhp-stepper-val">{{ watermelonQty() }}</div>
+                <button type="button" class="rhp-stepper-btn" (click)="incFlavor('watermelon')">+</button>
+              </div>
+            </div>
+
+            <div class="rhp-flavor-note">
+              Total: {{ strawberryQty() + watermelonQty() }} / 2
+            </div>
+          </div>
         </div>
       }
     </div>
   </div>
+
+  @if (packageType() === 'otp') {
+    <app-rhp-logged-out-message-container
+      [vipTotalPriceLabel]="vipTotalPriceLabel()"
+      signUpHref="#"
+      loginHref="#"
+    ></app-rhp-logged-out-message-container>
+  }
 
   <!-- CTA -->
   <button
