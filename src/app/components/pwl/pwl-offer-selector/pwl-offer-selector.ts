@@ -56,10 +56,10 @@ export class PwlOfferSelectorComponent {
   readonly otpSavingsByQty: Record<number, number> = {
     1: 0,
     2: 0,
-    3: 10,
-    4: 10,
-    5: 10,
-    6: 15,
+    3: 75,
+    4: 100,
+    5: 126,
+    6: 165,
   };
 
   // --- VIP (logged-out message) pricing matrix ---
@@ -75,20 +75,20 @@ export class PwlOfferSelectorComponent {
   // --- SUB (Subscribe and Save) pricing matrix (bundle totals) ---
   readonly subBundleTotals: Record<number, number> = {
     1: 44.95,
-    2: 87.9,
+    2: 89.9,
     3: 119.85,
-    4: 160.73,
-    5: 200.92,
+    4: 159.80,
+    5: 199.75,
     6: 227.70,
   };
 
   readonly subSavingsByQty: Record<number, number> = {
-    1: 44,
-    2: 44,
-    3: 49,
-    4: 49,
-    5: 49,
-    6: 53,
+    1: 25,
+    2: 25,
+    3: 90,
+    4: 92,
+    5: 115,
+    6: 192,
   };
 
   // --- flavors ---

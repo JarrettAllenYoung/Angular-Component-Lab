@@ -11,10 +11,16 @@ import {
   type PwlCartItem,
 } from '../../../components/pwl/pwl-cart-detail-drawer/pwl-cart-detail-drawer';
 
+import { PwlCssAccordionComponent } from '../pwl-css-accordion/pwl-css-accordion.component';
+
 @Component({
   selector: 'app-pwl-product-detail',
   standalone: true,
-  imports: [PwlOfferSelectorComponent, PwlCartDetailDrawerComponent],
+  imports: [
+    PwlOfferSelectorComponent,
+    PwlCartDetailDrawerComponent,
+    PwlCssAccordionComponent,
+  ],
   templateUrl: './pwl-product-detail.html',
   styleUrl: './pwl-product-detail.css',
 })
@@ -24,7 +30,8 @@ export class PwlProductDetailComponent {
   selectedFlavorImgAlt = signal('Chocolate');
   product = {
     brand: 'Power Life',
-    title: 'High Impact Plant Protein †',
+    title: 'High Impact Plant Protein',
+    titleSup: '†',
     description:
       'A unique blend of powerful plant proteins, HMB, vitamin D3, and digestive enzymes designed to nourish your muscles, support your strength, and support the preservation of lean muscle.',
   };
