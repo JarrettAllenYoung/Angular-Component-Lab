@@ -5,41 +5,16 @@
     <div class="variant-row">
       <div class="variant-radio-wrapper">
         @for (f of flavors; track f.key) {
-          <div class="variant-card" [class.is-selected]="selectedFlavor() === f.key">
-            <label
-              class="variant-choice"
-              [for]="'variant-' + f.key"
-              (click)="setSelectedFlavor(f.key)"
-            >
-              <input
-                [id]="'variant-' + f.key"
-                type="radio"
-                name="variant-option"
-                [checked]="selectedFlavor() === f.key"
-                (change)="setSelectedFlavor(f.key)"
-              />
-
-              <div class="variant-image">
-                <img [src]="f.imgSrc" [alt]="f.imgAlt" />
-              </div>
-
-              <span class="variant-pill">{{ f.label }}</span>
-            </label>
-
-            <div class="variant-qty">
-              <select
-                class="variant-select"
-                [attr.aria-label]="f.label + ' quantity'"
-                [value]="quantities()[f.key]"
-                (change)="setQty(f.key, +(($any($event.target)).value))"
-              >
-                @for (n of optionsForFlavor(f.key); track n) {
-                  <option [value]="n">{{ n }}</option>
-                }
-              </select>
-              <span class="variant-caret" aria-hidden="true"></span>
-            </div>
-          </div>
+          <app-pwl-os-flavor-sel
+            [flavor]="f"
+            [qty]="quantities()[f.key]"
+            [max]="maxForFlavor(f.key)"
+            [isSelected]="selectedFlavor() === f.key"
+            [callout]="f.key === 'chocolate' ? 'Best Seller' : ''"
+            [unitPriceLabel]="packageType() === 'otp' ? oneTimeUnitPriceLabel() : subUnitPriceLabel()"
+            (select)="setSelectedFlavor(f.key)"
+            (qtyChange)="setQty(f.key, $event)"
+          ></app-pwl-os-flavor-sel>
         }
       </div>
     </div>
@@ -67,8 +42,9 @@
             <div class="pwl-card-heading">Subscribe and Save</div>
             <div class="pwl-card-sub">
               {{ oneTimeSubLabel() }}
+
               @if (packageType() === 'sub' && totalQty() > 0) {
-                <span> (monthly)</span>
+                <span style="display:block; font-size:14px;">{{ deliveryCadenceLabel() }}</span>
               }
             </div>
           </div>
@@ -87,11 +63,33 @@
 
       <div class="pwl-benefits-list">
         <ul class="pwl-benefits">
-          <li>Save $25-$192 on every subscription order</li>
-          <li>Easily change your quantities</li>
-          <li>Cancel any time</li>
+          <strong>How subscription works:</strong>
+          <li>Change flavors and quantities anytime</li>
+          <li>Cancel anytime - no fees</li>
+          <li>Skip or reschedule anytime</li>
           <li>Pre-shipment reminders (no surprise charges)</li>
         </ul>
+
+        <div class="pwl-delivery-row">
+          <div class="pwl-delivery-label">Delivers every</div>
+
+          <div class="pwl-delivery-select-wrap" (click)="$event.stopPropagation()">
+            <select
+              #deliveryCadenceSelect
+              class="pwl-delivery-select"
+              [value]="deliveryCadence()"
+              (click)="$event.stopPropagation()"
+              (change)="onDeliveryCadenceChange($event)"
+              aria-label="Delivery frequency"
+            >
+              @for (w of deliveryCadenceOptions; track w) {
+                <option [value]="w">{{ w }} weeks</option>
+              }
+            </select>
+            <span class="pwl-delivery-caret" aria-hidden="true"></span>
+          </div>
+        </div>
+
       </div>
     </button>
 

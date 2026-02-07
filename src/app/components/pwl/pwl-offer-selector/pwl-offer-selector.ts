@@ -1,5 +1,6 @@
 
 import { PwlLoggedOutMessageContainerComponent } from '../pwl-logged-out-message-container/pwl-logged-out-message-container';
+import { PwlOsFlavorSelComponent } from '../pwl-os-flavor-sel/pwl-os-flavor-sel';
 
 import {
   Component,
@@ -8,6 +9,9 @@ import {
   effect,
   EventEmitter,
   Output,
+  AfterViewInit,
+  ElementRef,
+  ViewChild,
 } from '@angular/core';
 
 export type FlavorKey = 'chocolate' | 'vanilla' | 'strawberry-vanilla';
@@ -27,17 +31,18 @@ export type AddToCartPayload = {
     totalQtyLabel: string;
     price: number;
     vipTotalPriceLabel: string;
+    deliveryCadenceLabel?: string;
   };
 };
 
 @Component({
   selector: 'app-pwl-offer-selector',
   standalone: true,
-  imports: [PwlLoggedOutMessageContainerComponent],
+  imports: [PwlLoggedOutMessageContainerComponent, PwlOsFlavorSelComponent],
   templateUrl: './pwl-offer-selector.html',
   styleUrl: './pwl-offer-selector.css',
 })
-export class PwlOfferSelectorComponent {
+export class PwlOfferSelectorComponent implements AfterViewInit {
   // --- pricing (non-member for now) ---
   readonly unitPrice = 79.0;
   readonly maxTotalQty = 6;
@@ -124,6 +129,27 @@ export class PwlOfferSelectorComponent {
     'strawberry-vanilla': 0,
   });
 
+  @ViewChild('deliveryCadenceSelect') deliveryCadenceSelect?: ElementRef<HTMLSelectElement>;
+
+  deliveryCadenceOptions = [2, 4, 6, 8] as const;
+
+  // Placeholder initial value; will be synced from the select in ngAfterViewInit
+  deliveryCadence = signal<number>(this.deliveryCadenceOptions[0]);
+
+  setDeliveryCadence(next: number) {
+    this.deliveryCadence.set(next);
+  }
+
+  onDeliveryCadenceChange(e: Event) {
+    const next = Number((e.target as HTMLSelectElement).value);
+    if (Number.isFinite(next)) this.setDeliveryCadence(next);
+  }
+
+  deliveryCadenceLabel = computed(() => {
+    const w = this.deliveryCadence();
+    return `every ${w} weeks`;
+  });
+
   packageType = signal<'sub' | 'otp'>('sub');
 
   selectedFlavor = signal<FlavorKey>('chocolate');
@@ -137,17 +163,28 @@ export class PwlOfferSelectorComponent {
   selectedFlavorImgSrc = computed(() => this.selectedFlavorObj().imgSrc);
   selectedFlavorImgAlt = computed(() => this.selectedFlavorObj().imgAlt);
 
-  constructor() {
-    // Emit the initial selected flavor once the component is live
-    effect(() => {
-      const f = this.selectedFlavorObj();
-      this.flavorChange.emit(f);
+    constructor() {
+      // Emit the initial selected flavor once the component is live
+      effect(() => {
+        const f = this.selectedFlavorObj();
+        this.flavorChange.emit(f);
+      });
+    }
+
+  ngAfterViewInit(): void {
+    // Defer 1 tick so the select has its final initial value.
+    queueMicrotask(() => {
+      const el = this.deliveryCadenceSelect?.nativeElement;
+      if (!el) return;
+
+      const next = Number(el.value);
+      if (Number.isFinite(next)) this.setDeliveryCadence(next);
     });
   }
 
   setSelectedFlavor(flavor: FlavorKey) {
     this.selectedFlavor.set(flavor);
-}
+  }
 
   // --- derived ---
   totalQty = computed(() => {
@@ -302,6 +339,8 @@ export class PwlOfferSelectorComponent {
         totalQtyLabel: `${qty} jar${qty === 1 ? '' : 's'}`,
         price: this.totalPrice(),
         vipTotalPriceLabel: this.vipTotalPriceLabel(),
+        deliveryCadenceLabel:
+          this.packageType() === 'sub' ? this.deliveryCadenceLabel() : undefined,
       },
     });
   }

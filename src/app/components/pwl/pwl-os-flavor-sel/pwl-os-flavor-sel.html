@@ -1,0 +1,67 @@
+<div
+  class="pwl-os-flavor-sel"
+  [class.is-selected]="isSelected"
+  (click)="onSelect()"
+>
+    <div class="pwl-os-flavor-sel-wrapper">
+        <div class="pwl-os-flavor-sel-img">
+        <img [src]="flavor.imgSrc" [alt]="flavor.imgAlt" />
+        </div>
+
+        <div class="pwl-os-flavor-sel-text">
+        @if (callout) {
+            <div class="flavor-sel-callout">{{ callout }}</div>
+        }
+
+        <div class="flavor-sel-flavor">{{ flavor.label }}</div>
+
+        <div class="flavor-sel-price-wrapper">
+            <div class="flavor-sel-price">{{ unitPriceLabel }}</div>
+            <button type="button" class="flavor-sel-learn" (click)="$event.stopPropagation()">
+            Learn more
+            </button>
+        </div>
+        </div>
+    </div>
+
+    <div class="pwl-os-flavor-sel-qty-wrapper" (click)="$event.stopPropagation()">
+        @if (qty === 0) {
+            <button type="button" class="flavor-sel-add" (click)="inc()" aria-label="Add one">
+            +
+            </button>
+        } @else {
+            <div class="pwl-os-flavor-sel-qty-input">
+            <button
+                type="button"
+                class="flavor-sel-step"
+                (click)="dec()"
+                [disabled]="qty <= 0"
+                aria-label="Decrease"
+            >
+                −
+            </button>
+
+            <input
+                type="number"
+                class="flavor-sel-qty"
+                [value]="qty"
+                min="0"
+                [attr.max]="max"
+                (input)="onQtyInput($event)"
+                aria-label="Quantity"
+            />
+
+            <button
+                type="button"
+                class="flavor-sel-step"
+                (click)="inc()"
+                [disabled]="qty >= max"
+                aria-label="Increase"
+            >
+                +
+            </button>
+            </div>
+        }
+    </div>
+
+</div>

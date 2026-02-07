@@ -17,6 +17,7 @@ export type PwlCartItem = {
   totalQtyLabel: string;
   price: number;
   vipTotalPriceLabel: string;
+  deliveryCadenceLabel?: string;
 };
 
 @Component({

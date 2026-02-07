@@ -73,8 +73,8 @@
             <div class="pwl-cart-row pwl-cart-row--total">
               <span class="pwl-cart-k">
                 Total
-                @if (item.packageLabel === 'Subscribe and Save') {
-                  <span class="pwl-monthly"> (Monthly)</span>
+                @if (item.packageLabel === 'Subscribe and Save' && item.deliveryCadenceLabel) {
+                  <span style="display: block; font-size: 14px;">({{ item.deliveryCadenceLabel }})</span>
                 }
               </span>
               <span class="pwl-cart-v">${{ item.price.toFixed(2) }}</span>
