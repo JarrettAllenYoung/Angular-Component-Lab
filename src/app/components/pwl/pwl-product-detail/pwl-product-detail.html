@@ -12,7 +12,9 @@
   <div class="pwl-pdp__buy">
     <!-- Right: info -->
     <div class="pwl-info">
-      <h1 class="pwl-title">{{ product.title }}</h1>
+      <h1 class="pwl-title">
+        {{ product.title }} <sup class="pwl-title-sup">{{ product.titleSup }}</sup>
+      </h1>
       <div class="pwl-divider"></div>
       <p class="pwl-desc">
         {{ product.description }}
@@ -33,4 +35,12 @@
     [item]="cartItem()"
     (close)="closeDrawer()"
   ></app-pwl-cart-detail-drawer>
+  
+</div>
+
+<div class="pwl-pdp-1-col">
+  <h1 class="pwl-title">Frequently Asked Questions</h1>
+  <app-pwl-css-accordion></app-pwl-css-accordion>
+  <div class="pwl-pdp-1-col-inner">
+  </div>
 </div>

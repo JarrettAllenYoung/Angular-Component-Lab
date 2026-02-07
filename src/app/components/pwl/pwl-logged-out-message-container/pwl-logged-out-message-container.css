@@ -3,7 +3,8 @@
 }
 
 .logged-out-message-container {
-  border: 1px solid #1F3D93;
+  background-color: #FEF8E6;
+  border: 1px solid #FDF1CC;
   border-radius: 4px;
   display: flex;
   flex-direction: column;

@@ -76,7 +76,7 @@
           <div class="pwl-card-right">
             <div class="pwl-price-row">
               @if (showSubSavings()) {
-                <span class="pwl-compare">Save {{ subSavingsPct() }}%</span>
+                <span class="pwl-compare">Save ${{ subSavingsPct() }}</span>
               }
               <span class="pwl-strong">{{ subUnitPriceLabel() }}</span>
             </div>
@@ -87,7 +87,7 @@
 
       <div class="pwl-benefits-list">
         <ul class="pwl-benefits">
-          <li>Save 44-53% on every subscription order</li>
+          <li>Save $25-$192 on every subscription order</li>
           <li>Easily change your quantities</li>
           <li>Cancel any time</li>
           <li>Pre-shipment reminders (no surprise charges)</li>
@@ -114,7 +114,7 @@
           <div class="pwl-card-right">
             <div class="pwl-price-row">
               @if (showOtpSavings()) {
-                <span class="pwl-compare">Save {{ otpSavingsPct() }}%</span>
+                <span class="pwl-compare">Save ${{ otpSavingsPct() }}</span>
               }
               <span class="pwl-strong">{{ oneTimeUnitPriceLabel() }}</span>
             </div>
