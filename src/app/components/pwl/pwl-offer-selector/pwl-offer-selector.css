@@ -8,8 +8,10 @@
   max-width: 980px;
 }
 
-.variant-row {
-  max-width: 520px; /* match your right column target */
+@media screen and (max-width: 1024px) {
+  .variant-row {
+    max-width: 520px;
+  }
 }
 
 .variant-radio-wrapper {
