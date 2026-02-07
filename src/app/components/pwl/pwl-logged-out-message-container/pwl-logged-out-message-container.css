@@ -1,0 +1,58 @@
+:host {
+  display: block;
+}
+
+.logged-out-message-container {
+  border: 1px solid #1F3D93;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 25px;
+  gap: 10px;
+}
+
+.logged-out-message-container p span {
+  color: #1F3D93;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.logged-out-message-container .links {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.logged-out-message-container .link-as-btn.sign-up-link {
+  background-color: #FF6A1A;
+  padding: 3px 15px;
+  color: #000;
+  border-radius: 4px;
+  transition: all 200ms;
+}
+
+.logged-out-message-container .link-as-btn.sign-up-link:hover {
+  background-color: #1F3D93;
+  color: #fff;
+}
+
+.logged-out-message-container .link-as-btn.login-link {
+  color: #000;
+  text-decoration: underline;
+  transition: all 200ms;
+}
+
+@media (max-width: 767px) {
+    .logged-out-message-container {
+        padding: 25px 15px;
+    }
+}

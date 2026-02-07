@@ -1,0 +1,57 @@
+:host {
+  display: block;
+}
+
+.pwl-pdp {
+  font-family: 'Montserrat', sans-serif;
+  display: grid;
+  gap: 32px;
+  max-width: 1220px;
+  margin: 0 auto;
+}
+
+@media (min-width: 1024px) {
+  .pwl-pdp {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+  .pwl-pdp__media {
+    position: sticky;
+    top: 24px;
+    align-self: start;
+  }
+}
+
+.pwl-pdp__media-card {
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pwl-pdp__media-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #334155;
+}
+
+.pwl-pdp__img {
+  width: 70%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+}
+
+.pwl-title {
+  font-size: 29px;
+  color: #111926;
+  font-weight: 700;
+  line-height: 39px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.pwl-desc {
+  margin: 12px 0 20px;
+  font-size: 14px;
+  letter-spacing: 0.89px;
+}

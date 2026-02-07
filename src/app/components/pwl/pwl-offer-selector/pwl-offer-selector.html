@@ -1,0 +1,143 @@
+<div class="pwl-offer">
+  <div class="variant-options">
+    <label class="pwl-title" for="variants">CHOOSE YOUR FAVORITE FLAVORS</label>
+
+    <div class="variant-row">
+      <div class="variant-radio-wrapper">
+        @for (f of flavors; track f.key) {
+          <div class="variant-card" [class.is-selected]="selectedFlavor() === f.key">
+            <label
+              class="variant-choice"
+              [for]="'variant-' + f.key"
+              (click)="setSelectedFlavor(f.key)"
+            >
+              <input
+                [id]="'variant-' + f.key"
+                type="radio"
+                name="variant-option"
+                [checked]="selectedFlavor() === f.key"
+                (change)="setSelectedFlavor(f.key)"
+              />
+
+              <div class="variant-image">
+                <img [src]="f.imgSrc" [alt]="f.imgAlt" />
+              </div>
+
+              <span class="variant-pill">{{ f.label }}</span>
+            </label>
+
+            <div class="variant-qty">
+              <select
+                class="variant-select"
+                [attr.aria-label]="f.label + ' quantity'"
+                [value]="quantities()[f.key]"
+                (change)="setQty(f.key, +(($any($event.target)).value))"
+              >
+                @for (n of optionsForFlavor(f.key); track n) {
+                  <option [value]="n">{{ n }}</option>
+                }
+              </select>
+              <span class="variant-caret" aria-hidden="true"></span>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+
+  <div class="pwl-title">CHOOSE YOUR PACKAGE:</div>
+
+  <div class="pwl-pricing">
+    <!-- SUBSCRIBE -->
+    <button
+      type="button"
+      class="pwl-pricing-card"
+      [class.is-selected]="packageType() === 'sub'"
+      (click)="setPackageType('sub')"
+    >
+      <div class="pwl-card-top" [class.is-popular]="packageType() === 'sub'">
+        MOST POPULAR
+      </div>
+
+      <div class="pwl-card-body">
+        <span class="pwl-radio" aria-hidden="true"></span>
+
+        <div class="pwl-card-main-wrapper">
+          <div class="pwl-card-main">
+            <div class="pwl-card-heading">Subscribe and Save</div>
+            <div class="pwl-card-sub">
+              {{ oneTimeSubLabel() }}
+              @if (packageType() === 'sub' && totalQty() > 0) {
+                <span> (monthly)</span>
+              }
+            </div>
+          </div>
+
+          <div class="pwl-card-right">
+            <div class="pwl-price-row">
+              @if (showSubSavings()) {
+                <span class="pwl-compare">Save {{ subSavingsPct() }}%</span>
+              }
+              <span class="pwl-strong">{{ subUnitPriceLabel() }}</span>
+            </div>
+            <div class="pwl-subprice">{{ subServingPriceLabel() }}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pwl-benefits-list">
+        <ul class="pwl-benefits">
+          <li>Save 44-53% on every subscription order</li>
+          <li>Easily change your quantities</li>
+          <li>Cancel any time</li>
+          <li>Pre-shipment reminders (no surprise charges)</li>
+        </ul>
+      </div>
+    </button>
+
+    <!-- ONE TIME -->
+    <button
+      type="button"
+      class="pwl-pricing-card"
+      [class.is-selected]="packageType() === 'otp'"
+      (click)="setPackageType('otp')"
+    >
+      <div class="pwl-card-body">
+        <span class="pwl-radio" aria-hidden="true"></span>
+
+        <div class="pwl-card-main-wrapper">
+          <div class="pwl-card-main">
+            <div class="pwl-card-heading">One-Time Purchase</div>
+            <div class="pwl-card-sub">{{ oneTimeSubLabel() }}</div>
+          </div>
+
+          <div class="pwl-card-right">
+            <div class="pwl-price-row">
+              @if (showOtpSavings()) {
+                <span class="pwl-compare">Save {{ otpSavingsPct() }}%</span>
+              }
+              <span class="pwl-strong">{{ oneTimeUnitPriceLabel() }}</span>
+            </div>
+            <div class="pwl-subprice">{{ oneTimeServingPriceLabel() }}</div>
+          </div>
+        </div>
+      </div>
+    </button>
+
+    @if (packageType() === 'otp') {
+      <app-pwl-logged-out-message-container
+        [vipTotalPriceLabel]="vipTotalPriceLabel()"
+      ></app-pwl-logged-out-message-container>
+    }
+  </div>
+
+  <button
+    type="button"
+    class="pwl-cta"
+    [disabled]="!canAddToCart()"
+    [class.is-disabled]="!canAddToCart()"
+    (click)="onAddToCart()"
+  >
+    {{ ctaLabel() }}
+  </button>
+</div>

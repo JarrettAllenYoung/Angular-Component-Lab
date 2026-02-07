@@ -1,0 +1,367 @@
+:host {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: .02em;
+}
+
+.pwl-offer {
+  max-width: 980px;
+}
+
+.variant-row {
+  max-width: 520px; /* match your right column target */
+}
+
+.variant-radio-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  justify-items: center;
+  align-items: start;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.variant-card {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 140px; /* remove the shrink cap */
+}
+
+.variant-choice {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.variant-choice input {
+  position: relative;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.variant-qty {
+  position: relative;
+  width: 92px; /* controls how wide the selector is */
+}
+
+.variant-select {
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 1px solid #1f1f1f;
+  border-radius: 10px;
+  background: #ffffff;
+  padding: 10px 34px 10px 14px;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.variant-caret {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  border-right: 3px solid #1f1f1f;
+  border-bottom: 3px solid #1f1f1f;
+  transform: translateY(-60%) rotate(45deg);
+  pointer-events: none;
+}
+
+.variant-image {
+  width: 76px;
+  height: 76px;
+  border-radius: 999px;
+  background: #efefef;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid transparent;
+}
+
+.variant-image img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+
+.variant-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  border-radius: 6px;
+  background: #e8e8e8;
+  font-size: 12px;
+  font-weight: 400;
+  text-align: center;
+  line-height: 1.1;
+  width: 144px;
+  min-height: 47px;
+}
+
+/* Selected flavor styling */
+.variant-card.is-selected .variant-image {
+  border: 1px solid #000;
+}
+
+.variant-card.is-selected .variant-pill {
+  background: #1F3D93;
+  color: #fff;
+}
+
+.pwl-title {
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  font-size: 16px;
+  margin-bottom: 14px;
+}
+
+.pwl-pricing {
+  display: grid;
+  gap: 18px;
+}
+
+/* Card */
+.pwl-pricing-card {
+  width: 100%;
+  border: 1px solid #E2E8DC;
+  border-radius: 4px;
+  background: #ffffff;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  transition: opacity 200ms ease;
+}
+
+.pwl-pricing-card.is-selected {
+  border-color: #E2E8DC;
+  background: #E2E8DC;
+}
+
+/* when one is selected, dim the other */
+.pwl-pricing:has(.pwl-pricing-card.is-selected) .pwl-pricing-card:not(.is-selected) {
+  opacity: 0.7;
+}
+
+/* Top bar */
+.pwl-card-top {
+  background: #1F3D93;
+  color: #ffffff;
+  text-align: center;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  padding: 14px 12px;
+  border-radius: 4px 4px 0 0;
+}
+
+.pwl-card-top.is-muted {
+  background: #E2E8DC;
+  opacity: 0; /* hidden but keeps spacing */
+}
+
+/* Body layout */
+.pwl-card-body {
+  padding: 22px 20px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+/* Radio */
+.pwl-radio {
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  border: 2px solid #1F3D93;
+  display: inline-block;
+  position: relative;
+  margin-top: 0;
+}
+
+.pwl-card-main-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.pwl-pricing-card.is-selected .pwl-radio::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: 999px;
+  background: #1F3D93;
+}
+
+/* Text */
+.pwl-card-heading {
+  font-weight: 700;
+  font-size: 20px;
+  color: #0b0b0b;
+}
+
+.pwl-card-sub {
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+/* Right prices */
+.pwl-card-right {
+  text-align: right;
+  min-width: 220px;
+}
+
+.pwl-price-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pwl-compare {
+  background-color: #F96900;
+  padding: 5px 8px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.pwl-strong {
+  font-weight: 700;
+  font-size: 20px;
+  color: #000;
+}
+
+.pwl-subprice {
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+/* Benefits (only visible when selected) */
+.pwl-benefits-list {
+  padding: 0 20px 22px;
+}
+
+.pwl-benefits {
+  display: grid;
+  gap: 10px;
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.pwl-benefits li {
+  list-style: none;
+  position: relative;
+  padding-left: 26px;
+}
+
+.pwl-benefits li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: 900;
+  color: #1F3D93;
+}
+
+/* CTA (keep your orange vibe) */
+.pwl-cta {
+  margin-top: 18px;
+  width: 100%;
+  border: 0;
+  border-radius: 4px;
+  padding: 10px 30px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 2.2;
+  background: #1F3D93;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 200ms;
+}
+
+.pwl-cta.is-disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.pwl-cta:hover:not(.is-disabled) {
+  background: #1F3D93;
+}
+
+/* Mobile safeguards */
+@media (max-width: 767px) {
+  /* reduce the “8 columns” grid to a usable mobile layout */
+  .variant-radio-wrapper {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    justify-items: center;
+    justify-items: stretch;
+    align-items: stretch;
+  }
+
+  /* don’t let cards stretch weirdly */
+  .variant-card {
+    max-width: none;
+    width: 100%;
+    height: 100%;
+    grid-template-rows: auto auto 1fr; /* label, spacer, select */
+    align-content: start;
+  }
+
+  .variant-choice {
+    width: 100%;
+  }
+
+  .variant-pill {
+    width: 100%;
+    min-height: 48px; /* ensures 1-line and 2-line pills occupy same height */
+  }
+
+  .variant-qty {
+    margin-top: auto; /* pins dropdown to bottom so cards match */
+  }
+
+  /* pricing area: remove desktop assumptions */
+  .pwl-card-body {
+    grid-template-columns: 42px 1fr;
+    align-items: start;
+    padding: 20px;
+  }
+
+  .pwl-radio {
+    width: 26px;
+  }
+
+  .pwl-card-main-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .pwl-card-right {
+    grid-column: 2;
+    justify-self: start;
+    text-align: left;
+    width: 100%;
+    min-width: 0;
+    margin-top: 10px;
+  }
+
+  .pwl-price-row {
+    flex-direction: row-reverse;
+  }
+
+  /* optional: keep price readable on mobile */
+  .pwl-strong {
+    font-size: 24px;
+  }
+}
