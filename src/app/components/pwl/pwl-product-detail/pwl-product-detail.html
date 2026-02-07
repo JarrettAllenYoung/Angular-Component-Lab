@@ -1,0 +1,36 @@
+<div class="pwl-pdp">
+  <div class="pwl-pdp__media">
+    <div class="pwl-pdp__media-card">
+      <img
+        [src]="selectedFlavorImgSrc()"
+        [alt]="selectedFlavorImgAlt()"
+        class="pwl-pdp__img"
+      />
+    </div>
+  </div>
+
+  <div class="pwl-pdp__buy">
+    <!-- Right: info -->
+    <div class="pwl-info">
+      <h1 class="pwl-title">{{ product.title }}</h1>
+      <div class="pwl-divider"></div>
+      <p class="pwl-desc">
+        {{ product.description }}
+      </p>
+
+      <!-- Later: drop in your PWL offer selector / drawer here -->
+      <!-- <app-pwl-offer-selector></app-pwl-offer-selector> -->
+      <!-- <app-pwl-cart-detail-drawer></app-pwl-cart-detail-drawer> -->
+    </div>
+    <app-pwl-offer-selector
+      (flavorChange)="onFlavorChange($event)"
+      (addToCart)="onAddToCart($event)"
+    ></app-pwl-offer-selector>
+  </div>
+
+  <app-pwl-cart-detail-drawer
+    [open]="drawerOpen()"
+    [item]="cartItem()"
+    (close)="closeDrawer()"
+  ></app-pwl-cart-detail-drawer>
+</div>
