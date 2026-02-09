@@ -1,0 +1,124 @@
+.bhmd-offer-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;;
+}
+
+.bhmd-offer-selector__rating {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.bhmd-offer-selector__rating-meta {
+    display: flex;
+    gap: 8px;
+    font-size: 14px;
+    color: #334155;
+}
+
+.bhmd-offer-selector__price-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.bhmd-offer-selector__price {
+    font-family: "Chronicle Deck";
+    font-size: 45px;
+    font-weight: 700;
+    line-height: 1;
+    color: #233354;
+    letter-spacing: 1px;
+}
+
+.bhmd-offer-selector__klarna {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 14px;
+    color: #334155;
+    margin-top: 8px;
+}
+
+.bhmd-offer-selector__klarna-text span {
+    font-weight: 700;
+}
+
+.bhmd-offer-selector__klarna-link {
+    text-decoration: underline;
+}
+
+.bhmd-offer-selector__purchase-types {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.bhmd-offer-selector__btn--secondary {
+    background-color: #3761a0;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 300ms ease;
+}
+
+.bhmd-offer-selector__btn--secondary:hover {
+    background-color: #233354;
+}
+
+.bhmd-offer-selector__btn--primary {
+    background-color: #E0E7FF;
+    color: #233354;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 300ms ease;
+}
+
+.bhmd-offer-selector__btn--primary:hover {
+    background-color: #b5c5ff;
+}
+
+.bhmd-offer-selector__subtext-link {
+    font-size: 12px;
+    text-decoration: underline;
+}
+
+.bhmd-offer-selector__guarantee {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: 14px;
+    color: #334155;
+    background-color: #FFF8F7;
+    padding: 16px 8px;
+    border-radius: 4px;
+    margin-top: 8px;
+}
+
+.bhmd-offer-selector__guarantee-title {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.bhmd-offer-selector__guarantee-sub {
+    font-size: 12px;
+}
+
+.bhmd-offer-selector__guarantee-link {
+    text-decoration: underline;
+}

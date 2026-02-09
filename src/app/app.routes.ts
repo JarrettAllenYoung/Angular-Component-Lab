@@ -14,6 +14,7 @@ import { TabsLoginSignupFormPageComponent } from './pages/components/tabs-login-
 import { RoundhouseProvisionsPdpPageComponent } from './pages/components/rhp/roundhouse-provisions-pdp/roundhouse-provisions-pdp.page';
 import { AcyPdpPageComponent } from './pages/components/acy/acy-pdp/acy-pdp.page';
 import { PowerLifePdpPageComponent } from './pages/components/pwl/power-life-pdp/power-life-pdp.page';
+import { BhmdPdpPageComponent } from './pages/components/bhmd/bhmd-pdp/bhmd-pdp.page';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'components', pathMatch: 'full' },
@@ -31,5 +32,6 @@ export const routes: Routes = [
   { path: 'components/rhp/roundhouse-provisions-pdp', component: RoundhouseProvisionsPdpPageComponent },
   { path: 'components/acy-pdp', component: AcyPdpPageComponent },
   { path: 'components/power-life-pdp', component: PowerLifePdpPageComponent },
+  { path: 'components/bhmd-pdp', component: BhmdPdpPageComponent },
   
 ];

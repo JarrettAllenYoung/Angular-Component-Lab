@@ -1,0 +1,81 @@
+.bhmd-whats-included-outer-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: repeat(1, 1fr);
+    gap: 24px;
+    grid-auto-flow: row;
+    margin: 8px 0 24px 0;
+}
+
+.bhmd-whats-included-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.bhmd-whats-included__rating-meta {
+    font-size: 14px;
+}
+
+.bhmd-whats-included-title {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    line-height: 24px;
+}
+
+.bhmd-whats-included-desc {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 0.89px;
+    margin-top: 8px;
+}
+
+.bhmd-whats-included-icons__wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    align-self: start;
+    gap: 16px;
+    margin-top: 8px;
+}
+
+.bhmd-whats-included-icons__icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bhmd-whats-included-icons__img-wrap {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bhmd-whats-included-img img {
+    border-radius: 12px;
+}
+
+.bhmd-whats-included-icons__label {
+    margin-top: auto;
+}
+
+.bhmd-whats-included-icons__icon img {
+    width: 32px;
+    height: auto;
+    justify-self: center;
+}
+
+.bhmd-whats-included-icons__icon h3 {
+    font-size: 14px;
+}
+
+@media screen and (max-width: 640px) {
+    .bhmd-whats-included-outer-container {
+        display: flex;
+        flex-direction: column;
+    }
+}

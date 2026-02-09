@@ -1,0 +1,39 @@
+<div class="bhmd-whats-included-outer-container">
+  <div class="bhmd-whats-included-img">
+    <img [src]="data.imageSrc" [alt]="data.imageAlt" />
+  </div>
+
+  <div class="bhmd-whats-included-info">
+    <div class="bhmd-whats-included__rating-meta">
+      <span class="bhmd-whats-included__rating-score">{{ data.ratingScore }}</span>
+      <a
+        class="bhmd-whats-included__reviews-link"
+        href="#reviews"
+        (click)="onReviewsClick($event)"
+      >
+        {{ data.reviewsCountLabel }}
+      </a>
+    </div>
+
+    <div class="bhmd-whats-included-title">{{ data.title }}</div>
+
+    <div class="bhmd-whats-included-desc">
+      <p [innerHTML]="data.description"></p>
+    </div>
+
+    @if (data.icons?.length) {
+    <div class="bhmd-whats-included-icons__wrapper">
+        @for (icon of data.icons; track icon.label) {
+        <div class="bhmd-whats-included-icons__icon">
+            <div class="bhmd-whats-included-icons__img-wrap">
+                <img [src]="icon.imgSrc" [alt]="icon.imgAlt || icon.label" />
+            </div>
+            <h3 class="bhmd-whats-included-icons__label">{{ icon.label }}</h3>
+        </div>
+        }
+    </div>
+    }
+
+    <div class="bhmd-whats-included-targets"></div>
+  </div>
+</div>

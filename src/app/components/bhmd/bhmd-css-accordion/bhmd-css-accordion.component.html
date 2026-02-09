@@ -1,0 +1,64 @@
+<div class="bhmd-CssAccordion">
+  <ng-container
+    *ngTemplateOutlet="drawerList; context: { $implicit: items, level: 0 }"
+  ></ng-container>
+
+  <ng-template #drawerList let-list let-level="level">
+    <div
+      class="bhmd-drawer"
+      [class.bhmd-drawer--nested]="level > 0"
+      *ngFor="let item of list"
+    >
+      <input class="bhmd-drawer__trigger" [id]="item.id" type="checkbox" />
+
+      <label class="bhmd-drawer__title" [for]="item.id">
+        <span class="bhmd-drawer__title-text">{{ item.title }}</span>
+
+        <svg
+          class="bhmd-drawer__chevron"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="m19.5 8.25-7.5 7.5-7.5-7.5"
+          />
+        </svg>
+      </label>
+
+      <div class="bhmd-drawer__content-wrapper">
+        <div class="bhmd-drawer__content">
+          <!-- 1) What's Included items OR fallback text -->
+          <ng-template #includedOrText>
+            <ng-container *ngIf="item.includedKey; else textBody">
+              <app-bhmd-whats-included [slug]="item.includedKey"></app-bhmd-whats-included>
+            </ng-container>
+
+            <ng-template #textBody>
+              <p>{{ item.body }}</p>
+            </ng-template>
+          </ng-template>
+
+          <!-- 2) Suggested Use drawer -->
+          <ng-container *ngIf="item.id === 'faq-drawer-2'; else includedOrText">
+            <app-bhmd-suggested-use></app-bhmd-suggested-use>
+          </ng-container>
+
+          <ng-container *ngIf="item.children?.length">
+            <ng-container
+              *ngTemplateOutlet="
+                drawerList;
+                context: { $implicit: item.children, level: level + 1 }
+              "
+            ></ng-container>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

@@ -1,0 +1,109 @@
+<div class="bhmd-offer-selector">
+  <!-- Rating row -->
+  <div class="bhmd-offer-selector__rating">
+    <div class="bhmd-stars" aria-label="4.7 out of 5 stars">
+      <span class="bhmd-star bhmd-star--full" aria-hidden="true">★</span>
+      <span class="bhmd-star bhmd-star--full" aria-hidden="true">★</span>
+      <span class="bhmd-star bhmd-star--full" aria-hidden="true">★</span>
+      <span class="bhmd-star bhmd-star--full" aria-hidden="true">★</span>
+      <span class="bhmd-star bhmd-star--full" aria-hidden="true">★</span>
+      <!-- <span class="bhmd-star bhmd-star--empty" aria-hidden="true">☆</span> -->
+    </div>
+
+    <div class="bhmd-offer-selector__rating-meta">
+      <span class="bhmd-offer-selector__rating-score">4.7</span>
+      <a
+        class="bhmd-offer-selector__reviews-link"
+        href="#reviews"
+        (click)="onReviewsClick($event)"
+      >
+        (10161 Reviews)
+      </a>
+    </div>
+  </div>
+
+  <!-- Price -->
+  <div class="bhmd-offer-selector__price-row">
+    <span class="bhmd-offer-selector__price">$367.00</span>
+    <div class="bhmd-offer-selector__price__savings-detail">
+      <div class="base-price">Price: 
+        <s aria-label="Previous price" role="img" data-uw-rm-str-pr="price" data-uw-rm-sr="price" style="text-decoration-color: red;">$525.00</s>
+      </div>
+      <div class="savings-in-dollars">
+        (Save <span>$158.00</span>)
+      </div>
+    </div>
+  </div>
+
+  <!-- Klarna line -->
+  <div class="bhmd-offer-selector__klarna">
+    <span class="bhmd-offer-selector__klarna-text">
+      4 payments of <strong>$91.75</strong> at 0% interest with <span>Klarna</span>.
+      <br>
+      <a
+      class="bhmd-offer-selector__klarna-link"
+      href="#"
+      target="_blank"
+      rel="noopener"
+      (click)="onKlarnaClick($event)"
+    >
+      Check purchase power
+    </a>
+    </span>
+  </div>
+
+  <!-- Logged Out Message Container -->
+   <app-bhmd-logged-out-message-container
+    [vipTotalPriceLabel]="vipTotalPriceLabel()"
+  ></app-bhmd-logged-out-message-container>
+
+  <!-- Purchase type buttons -->
+  <div class="bhmd-offer-selector__purchase-types">
+
+    <button
+      type="button"
+      class="bhmd-offer-selector__btn bhmd-offer-selector__btn--secondary"
+      (click)="selectPurchaseType('sub')"
+    >
+      SUBSCRIBE + SAVE
+    </button>
+
+    <button
+      type="button"
+      class="bhmd-offer-selector__btn bhmd-offer-selector__btn--primary"
+      (click)="selectPurchaseType('otp')"
+    >
+      ONE-TIME PURCHASE
+    </button>
+
+    <button
+      type="button"
+      class="bhmd-offer-selector__subtext-link"
+      (click)="openSubscribeDetails()"
+    >
+      Unlock free shipping, free products and exclusive savings
+    </button>
+  </div>
+
+  <!-- Guarantee banner -->
+  <div class="bhmd-offer-selector__guarantee" role="note">
+    <div class="bhmd-offer-selector__guarantee-title">
+      60-Day Money Back Guarantee
+    </div>
+    <div class="bhmd-offer-selector__guarantee-sub">
+      Don't love it? It's on us.
+      <a
+        class="bhmd-offer-selector__guarantee-link"
+        href="#"
+        (click)="onGuaranteeLearnMore($event)"
+      >
+        Learn More
+      </a>
+    </div>
+  </div>
+
+  <!-- Accordion -->
+   <div class="bhmd-offer-selector__accordion">
+    <app-bhmd-css-accordion></app-bhmd-css-accordion>
+  </div>
+</div>
