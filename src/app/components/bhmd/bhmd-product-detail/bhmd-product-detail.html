@@ -1,0 +1,39 @@
+<div class="bhmd-pdp">
+  <div class="bhmd-pdp__media">
+    <div class="bhmd-pdp__media-card">
+      <img
+        [src]="selectedFlavorImgSrc()"
+        [alt]="selectedFlavorImgAlt()"
+        class="bhmd-pdp__img"
+      />
+    </div>
+  </div>
+
+  <div class="bhmd-pdp__buy">
+    <!-- Right: info -->
+    <div class="bhmd-info">
+      <h1 class="bhmd-title">
+        {{ product.title }}
+        
+      </h1>
+
+      <div class="bhmd-divider"></div>
+
+      <p class="bhmd-desc">
+        {{ product.description }}
+      </p>
+
+      <app-bhmd-offer-selector
+        (flavorChange)="onFlavorChange($event)"
+        (addToCart)="onAddToCart($event)"
+      ></app-bhmd-offer-selector>
+    </div>
+  </div>
+
+  <app-bhmd-cart-detail-drawer
+    [open]="drawerOpen()"
+    [item]="cartItem()"
+    (close)="closeDrawer()"
+  ></app-bhmd-cart-detail-drawer>
+</div>
+

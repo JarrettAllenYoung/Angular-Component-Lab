@@ -1,0 +1,14 @@
+<div class="bhmd-suggested-use">
+  @for (step of steps; track step.stepNumber) {
+    <div class="bhmd-suggested-use-wrapper">
+      <div class="bhmd-suggested-use-img">
+        <img [src]="step.imageSrc" [alt]="step.imageAlt" />
+      </div>
+
+      <div class="bhmd-suggested-use-text">
+        <p class="bhmd-suggested-use-heading"[innerHTML]="step.headingHtml"></p>
+        <p class="bhmd-suggested-use-body" [innerHTML]="step.bodyHtml"></p>
+      </div>
+    </div>
+  }
+</div>
