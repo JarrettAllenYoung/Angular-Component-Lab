@@ -83,7 +83,7 @@
               aria-label="Delivery frequency"
             >
               @for (w of deliveryCadenceOptions; track w) {
-                <option [value]="w">{{ w }} weeks</option>
+                <option [value]="w">{{ w }} month{{ w > 1 ? 's' : '' }}</option>
               }
             </select>
             <span class="pwl-delivery-caret" aria-hidden="true"></span>

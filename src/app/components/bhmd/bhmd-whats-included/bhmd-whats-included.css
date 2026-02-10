@@ -7,6 +7,10 @@
     margin: 8px 0 24px 0;
 }
 
+.bhmd-whats-included-img {
+    padding-top: 12px;
+}
+
 .bhmd-whats-included-info {
     display: flex;
     flex-direction: column;

@@ -131,7 +131,7 @@ export class PwlOfferSelectorComponent implements AfterViewInit {
 
   @ViewChild('deliveryCadenceSelect') deliveryCadenceSelect?: ElementRef<HTMLSelectElement>;
 
-  deliveryCadenceOptions = [2, 4, 6, 8] as const;
+  deliveryCadenceOptions = [1, 2, 3, 4, 5, 6] as const;
 
   // Placeholder initial value; will be synced from the select in ngAfterViewInit
   deliveryCadence = signal<number>(this.deliveryCadenceOptions[0]);
@@ -147,7 +147,7 @@ export class PwlOfferSelectorComponent implements AfterViewInit {
 
   deliveryCadenceLabel = computed(() => {
     const w = this.deliveryCadence();
-    return `every ${w} weeks`;
+    return `every ${w} month${w > 1 ? 's' : ''}`;
   });
 
   packageType = signal<'sub' | 'otp'>('sub');

@@ -9,7 +9,7 @@
 
 .bhmd-suggested-use-img {
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: center;
 }
 
