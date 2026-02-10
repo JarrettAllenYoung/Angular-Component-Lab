@@ -11,7 +11,7 @@ export type BhmdSuggestedUseStep = {
 const STEPS: BhmdSuggestedUseStep[] = [
   {
     stepNumber: 1,
-    imageSrc: '/images/bhmd/suggested-use/step-1.webp',
+    imageSrc: 'images/bhmd/suggested-use/step-1.webp',
     imageAlt: 'Step 1',
     headingHtml: '<strong>Step 1:</strong>',
     bodyHtml:
@@ -19,7 +19,7 @@ const STEPS: BhmdSuggestedUseStep[] = [
   },
   {
     stepNumber: 2,
-    imageSrc: '/images/bhmd/suggested-use/step-2.webp',
+    imageSrc: 'images/bhmd/suggested-use/step-2.webp',
     imageAlt: 'Step 2',
     headingHtml: '<strong>Step 2:</strong>',
     bodyHtml:
@@ -27,7 +27,7 @@ const STEPS: BhmdSuggestedUseStep[] = [
   },
   {
     stepNumber: 3,
-    imageSrc: '/images/bhmd/suggested-use/step-3.webp',
+    imageSrc: 'images/bhmd/suggested-use/step-3.webp',
     imageAlt: 'Step 3',
     headingHtml: '<strong>Step 3:</strong>',
     bodyHtml:
@@ -35,7 +35,7 @@ const STEPS: BhmdSuggestedUseStep[] = [
   },
   {
     stepNumber: 4,
-    imageSrc: '/images/bhmd/suggested-use/step-4.webp',
+    imageSrc: 'images/bhmd/suggested-use/step-4.webp',
     imageAlt: 'Step 4',
     headingHtml: '<strong>Step 4:</strong>',
     bodyHtml:
@@ -43,7 +43,7 @@ const STEPS: BhmdSuggestedUseStep[] = [
   },
   {
     stepNumber: 5,
-    imageSrc: '/images/bhmd/suggested-use/step-5.webp',
+    imageSrc: 'images/bhmd/suggested-use/step-5.webp',
     imageAlt: 'Step 5',
     headingHtml: '<strong>Step 5:</strong>',
     bodyHtml:
