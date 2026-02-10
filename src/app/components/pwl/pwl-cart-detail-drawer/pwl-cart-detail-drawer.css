@@ -145,6 +145,7 @@
 }
 
 .pwl-drawer-footer {
+  font-size: 12px;
   position: sticky;
   bottom: 0;
   z-index: 1;
